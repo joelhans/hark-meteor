@@ -1,0 +1,70 @@
+<head>
+  <title>Hark</title>
+</head>
+
+<body>
+  <section id="container">
+    {{loginButtons}}
+
+    <section class="main">
+      {{#if currentUser}}
+        {{> home}}
+        {{> subscriptions}}
+        {{> timeline}}
+        {{> notify}}
+      {{else}} 
+        {{> greeting}}
+      {{/if}}
+    </section>
+  </section>
+</body>
+
+<template name="greeting">
+  <div class="home-logo">
+    <img src="img/home_logo.svg" />
+  </div>
+  <h1>Hark is your personal radio station.</h1>
+</template>
+
+<!---------------------------
+-- TEMPLATE/HOME
+---------------------------->
+<template name="home">
+  <p>Thanks for logging in, {{user._id}}.</p>
+  <p>http://feeds.thisamericanlife.org/talpodc</p>
+  <p>http://feeds.thisamericanlife.org/talpodcast</p>
+  <p>http://nerdist.libsyn.com/rss</p>
+  <form id="add-podcast-form">
+    <input type="text" id="podcast-uri" placeholder="Enter a feed address." val="http://feeds.thisamericanlife.org/talpodc" />
+    <button>Add</button>
+  </form>
+</template>
+
+<!---------------------------
+-- TEMPLATE/SUBSCRIPTIONS
+---------------------------->
+<template name="subscriptions">
+  <p>Your feeds:</p>
+  {{#each feeds}}
+    <p>{{title}}</p>
+  {{/each}}
+</template>
+
+<!---------------------------
+-- TEMPLATE/TIMELINE
+---------------------------->
+<template name="timeline">
+  <p>Podcasts:</p>
+</template>
+
+<!---------------------------
+-- TEMPLATE/NOTIFICATIONS
+---------------------------->
+<template name="notify">
+  <p>Errors:</p>
+  {{#each messages}}
+    <p>{{this.message}}</p>
+  {{/each}}
+</template>
+
+
