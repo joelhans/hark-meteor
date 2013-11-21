@@ -31,7 +31,6 @@
 ---------------------------->
 <template name="home">
   <p>Thanks for logging in, {{user._id}}.</p>
-  <p>http://feeds.thisamericanlife.org/talpodc</p>
   <p>http://feeds.thisamericanlife.org/talpodcast</p>
   <p>http://nerdist.libsyn.com/rss</p>
   <form id="add-podcast-form">
@@ -55,6 +54,13 @@
 ---------------------------->
 <template name="timeline">
   <p>Podcasts:</p>
+  <ul>
+    {{#each items}}
+      <li>
+        {{title}}
+      </li>
+    {{/each}}
+  </ul>
 </template>
 
 <!---------------------------

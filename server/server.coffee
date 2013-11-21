@@ -29,6 +29,12 @@ messages = new Meteor.Collection 'messages'
 addFeed = (userId, url) ->
   return (meta) ->
     Fiber () ->
+      # Ensure the user hasn't already added the feed. 
+      if feeds.findOne {userId: userId, url: url}
+        console.log 'You already added that feed.'
+        return false
+  
+      # If the feed doesn't yet exist, go ahead and add it.
       feeds.insert {
         userId : userId
         title  : meta.title
@@ -38,28 +44,34 @@ addFeed = (userId, url) ->
           details = 'Error adding this feed.'
           pushError userId, url, details
         if feedId
-          # refreshFeed feeds.findOne {_id: feedId}
+          refreshFeed feeds.findOne {_id: feedId}
           console.log 'Feed added:',meta.title
     .run()
 
 refreshFeed = (feed) ->
   request(feed.url)
     .pipe(new FeedParser())
-    .on 'error', (err) ->
-      fut.return err
     .on 'readable', () ->
-    #  fut.return 'Successfully parsed feed items.'
+      stream = this.read()
+      item = null
+
+      console.log stream
+
+      for i in [0..20]
+        console.log stream[i].title
+      # while item = stream.read()
+      #  addItem(feed, item)
 
 refreshFeeds = () ->
   feeds.find {userId: this.userId}
-    .forEach refreshFeed
+    .fetch()
+    .forEach refreshFeed(this)
 
-addItem = (feed) ->
-  return (item) ->
+addItem = (feed, item) ->
     Fiber () ->
-      if items.findOne {feedId: feed._id, guid: article.guid}
+      if items.findOne {feedId: feed._id, guid: items.guid}
         return false
-      items.insert {
+      items.insert
         feedId   : feed._id
         userId   : feed.userId
         title    : item.title
@@ -70,7 +82,6 @@ addItem = (feed) ->
         link     : item.link
         file     : item.enclosures
         listened : false
-      }
     .run()
 
 pushError = (userId, url, details) ->
@@ -114,3 +125,6 @@ Meteor.publish 'messages', () ->
 
 Meteor.publish 'feeds', () ->
   return feeds.find()
+
+Meteor.publish 'items', () ->
+  return items.find()

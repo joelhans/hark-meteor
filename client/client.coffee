@@ -22,11 +22,12 @@ Template.subscriptions.feeds = () ->
   return feeds.find({userId: Meteor.userId()}).fetch()
 
 Template.timeline.items = () ->
-  return items.find()
+  return items.find({userId: Meteor.userId()}).fetch()
 
 Deps.autorun () ->
   Meteor.subscribe 'messages'
   Meteor.subscribe 'feeds'
+  Meteor.subscribe 'items'
 
 Template.notify.helpers
   messages: () -> 

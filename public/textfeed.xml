@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:cc="http://web.resource.org/cc/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<channel>
+		<atom:link href="http://nerdist.libsyn.com/rss" rel="self" type="application/rss+xml"/>
+		<title>The Nerdist</title>
+		<pubDate>Wed, 20 Nov 2013 08:48:09 +0000</pubDate>
+		<lastBuildDate>Wed, 20 Nov 2013 08:57:24 +0000</lastBuildDate>
+		<generator>Libsyn WebEngine 2.0</generator>
+		<link>http://nerdist.com</link>
+		<language>en</language>
+		<copyright><![CDATA[]]></copyright>
+		<docs>http://nerdist.com</docs>
+		<managingEditor>stuff@nerdist.com (stuff@nerdist.com)</managingEditor>
+		<description><![CDATA[Nerdy nerdness comedy podcast w/ Chris Hardwick, Jonah Ray & Matt Mira.]]></description>
+		<image>
+			<url>http://assets.libsyn.com/content/5515523.jpg</url>
+			<title>The Nerdist</title>
+			<link><![CDATA[http://nerdist.com]]></link>
+		</image>
+		<itunes:author>Chris Hardwick</itunes:author>
+		<itunes:keywords>chris,hardwick,jonah,matt,mira,nerdist,ray</itunes:keywords>
+	<itunes:category text="Comedy"/>
+		<itunes:image href="http://assets.libsyn.com/content/5515523.jpg" />
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:owner>
+			<itunes:name><![CDATA[Chris Hardwick]]></itunes:name>
+			<itunes:email>stuff@nerdist.com</itunes:email>
+		</itunes:owner>
+		<itunes:summary><![CDATA[I am Chris Hardwick. I am on TV a lot and have a blog at nerdist.com. This podcast is basically just me talking about stuff and things with my two nerdy friends Jonah Ray and Matt Mira, and usually someone more famous than all of us. Occasionally we swear because that is fun. I hope you like it, but if you don't I'm sure you will not hesitate to unfurl your rage in the 'reviews' section because that's how the Internet works.]]></itunes:summary>
+		<itunes:subtitle><![CDATA[w/ Chris Hardwick]]></itunes:subtitle>
+		
+
+		<!--
+		<item>
+			<title>Oliver Stone</title>
+			<pubDate>Wed, 20 Nov 2013 08:48:09 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[3233e8da4accc6c87e813b144741030d]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/oliver-stone]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2559215" />
+			<description><![CDATA[<p>The legendary Oliver Stone sits down with Chris to discuss turning true stories into dramatic movies, his views on the JFK assassination and his documentary mini series Untold History of the United States!</p>]]></description>
+			<enclosure length="38873136" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_441_-_OLiver_Stone.mp3" />
+			<itunes:duration>01:00:02</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The legendary Oliver Stone sits down with Chris to discuss turning true stories into dramatic movies, his views on the JFK assassination and his documentary mini series Untold History of the United States!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Chris Elliott</title>
+			<pubDate>Mon, 18 Nov 2013 10:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[9259dc532e58f890da1abb9912680038]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/chris-elliott]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2555899" />
+			<description><![CDATA[<p>The amazing Chris Elliott is on the podcast! He sits down with Chris and Jonah to talk about starting out on David Letterman, pissing off James Cameron and the new season of his show <em>Eagleheart</em> on Adult Swim!</p>]]></description>
+			<enclosure length="47881726" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_440_-_Chris_Elliott.mp3" />
+			<itunes:duration>01:16:30</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The amazing Chris Elliott is on the podcast! He sits down with Chris and Jonah to talk about starting out on David Letterman, pissing off James Cameron and the new season of his show Eagleheart on Adult Swim!...]]></itunes:subtitle>
+					</item>
+
+		-->
+
+		<item>
+			<title>Jackie Kashian</title>
+			<pubDate>Fri, 15 Nov 2013 18:42:53 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[984c3938bc5329f78d08061098d93b3d]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/jackie-kashian]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2552600" />
+			<description><![CDATA[<p>The always hilarious Jackie Kashian sits down with Chris and Matt to talk about first relationships, dealing with hecklers while onstage, and how Jackie introduced Chris to Harry Potter!</p>]]></description>
+			<enclosure length="53031901" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_439_-_Jackie_Kashian.mp3" />
+			<itunes:duration>01:26:48</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The always hilarious Jackie Kashian sits down with Chris and Matt to talk about first relationships, dealing with hecklers while onstage, and how Jackie introduced Chris to Harry Potter!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Gillian Jacobs</title>
+			<pubDate>Wed, 13 Nov 2013 09:30:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[7ea095db52c6b84f2dff5f3f3ca0025b]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/gillian-jacobs]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2548742" />
+			<description><![CDATA[<p>Gillian Jacobs and Chris talk about making life decisions as a child, having crushes on older movie stars and they reminisce about past auditions! They also talk about the upcoming season of Community!</p>]]></description>
+			<enclosure length="47818535" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_438_-_Gillian_Jacobs.mp3" />
+			<itunes:duration>01:18:43</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Gillian Jacobs and Chris talk about making life decisions as a child, having crushes on older movie stars and they reminisce about past auditions! They also talk about the upcoming season of Community!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>John DiMaggio Returns</title>
+			<pubDate>Tue, 12 Nov 2013 09:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[d90c4b13ce397a44f4e4fbeb1f014df2]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/john-di-maggio-returns]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2547563" />
+			<description><![CDATA[<p>John DiMaggio returns for another fun filled Nerdist! He hangs out with Chris and Jonah to talk about his upcoming documentary <em>I Know That Voice, </em>the ending of <em>Futurama</em>, and and John teaches how to do some impressions as he rifles through some of his legendary voices.</p>]]></description>
+			<enclosure length="32944710" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_437_-_John_DiMaggio.mp3" />
+			<itunes:duration>54:55</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[John DiMaggio returns for another fun filled Nerdist! He hangs out with Chris and Jonah to talk about his upcoming documentary I Know That Voice, the ending of Futurama, and and John teaches how to do some impressions as he rifles through some of his...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Aziz Ansari</title>
+			<pubDate>Mon, 11 Nov 2013 09:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[c439c7f131134558d28ab150e35afc65]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/aziz-ansari]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2546004" />
+			<description><![CDATA[<p>The hilarious Aziz Ansari sits down with Chris to talk about the world of stand up comedy today, his newest special on Netflix and where his inspiration for jokes comes from!</p>]]></description>
+			<enclosure length="35024076" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_436_-_Aziz_Ansari.mp3" />
+			<itunes:duration>01:12:51</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The hilarious Aziz Ansari sits down with Chris to talk about the world of stand up comedy today, his newest special on Netflix and where his inspiration for jokes comes from!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Kevin Feige</title>
+			<pubDate>Fri, 08 Nov 2013 08:50:16 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[58e25fff72e4b6314bfd25330a88c386]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/kevin-feige]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2542343" />
+			<description><![CDATA[<p>Chris and Jonah travel to Marvel Headquarters to talk to the man in charge, Kevin Feige! They talk about all the different Marvel movies, upcoming projects and how Kevin is actually a fan of the podcast!</p>]]></description>
+			<enclosure length="38400084" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_435_-_Kevin_Feige.mp3" />
+			<itunes:duration>01:19:53</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Chris and Jonah travel to Marvel Headquarters to talk to the man in charge, Kevin Feige! They talk about all the different Marvel movies, upcoming projects and how Kevin is actually a fan of the podcast!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Saoirse Ronan</title>
+			<pubDate>Thu, 07 Nov 2013 07:35:36 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[2bdfd640c93bbd6480d1122410d951b8]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/saoirse-ronan]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2540358" />
+			<description><![CDATA[<p>Saoirse Ronan sits down with Chris to talk about growing up in the Irish countryside, how pudding differs in Ireland and her role in the upcoming movie <em>How I Live Now</em>!</p>]]></description>
+			<enclosure length="26106441" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_434_-_Saoirse_Ronan.mp3" />
+			<itunes:duration>54:17</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Saoirse Ronan sits down with Chris to talk about growing up in the Irish countryside, how pudding differs in Ireland and her role in the upcoming movie How I Live Now!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Tom Hiddleston</title>
+			<pubDate>Wed, 06 Nov 2013 09:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[bc61ba443292d9cd213f991ddac483e3]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/tom-hiddleston]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2538787" />
+			<description><![CDATA[<p>Chris sits down with the lovely Tom Hiddleston to talk about how he formed the character of Loki, growing up in the UK and the stages a British actor takes to becoming a wizard!</p>]]></description>
+			<enclosure length="24288669" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_433_-_Tom_Hiddleston.mp3" />
+			<itunes:duration>50:29</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Chris sits down with the lovely Tom Hiddleston to talk about how he formed the character of Loki, growing up in the UK and the stages a British actor takes to becoming a wizard!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Clark Gregg</title>
+			<pubDate>Mon, 04 Nov 2013 09:30:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[1b04e5ae428605c4110b90a236e20974]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/clark-gregg]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2531863" />
+			<description><![CDATA[<p>Clark Gregg sits down with Chris to talk about how Agent Coulson came to rise, juggling a career between writing and acting and he tells a crazy story about acting on Broadway!</p>]]></description>
+			<enclosure length="34405987" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_432_-_Clark_Gregg.mp3" />
+			<itunes:duration>01:11:34</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Clark Gregg sits down with Chris to talk about how Agent Coulson came to rise, juggling a career between writing and acting and he tells a crazy story about acting on Broadway!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Ezra Koenig</title>
+			<pubDate>Fri, 01 Nov 2013 08:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[df3e5c6fbf368429e40f03744d4ba4f1]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/ezra-koenig]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2531859" />
+			<description><![CDATA[<p>Ezra Koenig of Vampire Weekend hangs out with the guys to talk about the different types of people who come to their concerts, the science in making albums that their fans will like and what it means to be satisfied in life!</p>]]></description>
+			<enclosure length="33360464" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_431_-_Ezra_Koenig.mp3" />
+			<itunes:duration>01:09:23</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Ezra Koenig of Vampire Weekend hangs out with the guys to talk about the different types of people who come to their concerts, the science in making albums that their fans will like and what it means to be satisfied in life!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Harrison Ford</title>
+			<pubDate>Wed, 30 Oct 2013 09:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[731d73d02fb606466e6dd7fdf64c713f]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/harrison-ford]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2529201" />
+			<description><![CDATA[<p>The guys sit down with Harrison Ford at SDCC to talk about life before Star Wars, what he brings to his characters and some of his favorite movies!</p>]]></description>
+			<enclosure length="25071100" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_430_-Harrison_Ford.mp3" />
+			<itunes:duration>52:07</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The guys sit down with Harrison Ford at SDCC to talk about life before Star Wars, what he brings to his characters and some of his favorite movies!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Ike Barinholtz</title>
+			<pubDate>Mon, 28 Oct 2013 16:36:41 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[f0830e5386c1ee4bf9c5ba6dae2963fb]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/ike-barinholtz]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2526589" />
+			<description><![CDATA[<p>The hilarious Ike Barinholtz hangs out with Chris and Jonah to talk about how having a kid has made him soft, what Hollywood must've been like in the '80s, and his days starting out in improv!</p>]]></description>
+			<enclosure length="29198006" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_429_-_Ike_Barinholtz.mp3" />
+			<itunes:duration>01:00:43</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The hilarious Ike Barinholtz hangs out with Chris and Jonah to talk about how having a kid has made him soft, what Hollywood must've been like in the '80s, and his days starting out in improv!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Lucky Pen</title>
+			<pubDate>Fri, 25 Oct 2013 08:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[c1e15040c04aff663f99572002122d78]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/lucky-pen]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2522319" />
+			<description><![CDATA[<p>Start your weekend off right with some hostful goodness! Jonah is still obsessed with Ray Donovan, Chris dropped his lucky pen and there's a special appearance by Bruce Gutter's family!</p>]]></description>
+			<enclosure length="30518286" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_428_-_Hostful_1.mp3" />
+			<itunes:duration>01:03:28</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Start your weekend off right with some hostful goodness! Jonah is still obsessed with Ray Donovan, Chris dropped his lucky pen and there's a special appearance by Bruce Gutter's family!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Nikki Glaser and Sara Schaefer</title>
+			<pubDate>Wed, 23 Oct 2013 08:28:03 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[5146294d9d801883d80d2ffd24d48588]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/nikki-glaser-and-sara-schaefer]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2519990" />
+			<description><![CDATA[<p>Nikki Glaser and Sara Schaefer sit down with Chris and Matt to talk about finding your voice as a stand up comedian, how women can be portrayed in the industry and their show Nikki and Sara on MTV!</p>]]></description>
+			<enclosure length="37020118" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_427_-_Nikki_Glaser_and_Sara_Schaefer.mp3" />
+			<itunes:duration>01:17:01</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Nikki Glaser and Sara Schaefer sit down with Chris and Matt to talk about finding your voice as a stand up comedian, how women can be portrayed in the industry and their show Nikki and Sara on MTV!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Greg Proops Returns Again</title>
+			<pubDate>Mon, 21 Oct 2013 08:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[16f779bf10eee4cfe4d497f669af78da]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/greg-proops-returns]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2517159" />
+			<description><![CDATA[<p>Greg Proops returns again to the podcast to discuss being the smartest (and most humble) man in the world, dealing with hecklers at shows and almost every movie ever!</p>]]></description>
+			<enclosure length="35441641" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_426_-_Greg_Proops_2.mp3" />
+			<itunes:duration>01:13:43</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Greg Proops returns again to the podcast to discuss being the smartest (and most humble) man in the world, dealing with hecklers at shows and almost every movie ever!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Danny McBride and Jody Hill</title>
+			<pubDate>Fri, 18 Oct 2013 22:00:10 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[802f199d757c9ad970572698e083fff0]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/danny-mc-bride-and-jody-hill]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2515091" />
+			<description><![CDATA[<p>Funny and all around awesome guys Danny McBride and Jody Hill come on the podcast to talk about their rise to fame, coming up with ideas for <em>Eastbound and Down</em>, and interacting with crazy fans!</p>]]></description>
+			<enclosure length="30517799" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_425_-_Danny_McBride_and_Jody_Hill.mp3" />
+			<itunes:duration>01:03:28</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Funny and all around awesome guys Danny McBride and Jody Hill come on the podcast to talk about their rise to fame, coming up with ideas for Eastbound and Down, and interacting with crazy fans!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Casey Wilson and June Diane Raphael</title>
+			<pubDate>Wed, 16 Oct 2013 05:54:04 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[11d177ce3d4f912e4e8de7a6caeaf18c]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/casey-wilson-and-june-diane-raphael]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2510933" />
+			<description><![CDATA[<p>The lovely and hilarious Casey Wilson and June Diane Raphael come on the show to talk about their weird froyo habits, everyone compares their workout routines and their new movie <em>Ass Backwards</em>!</p>]]></description>
+			<enclosure length="34571222" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_424_-_June_Diane_Raphael_and_Casey_Wilson.mp3" />
+			<itunes:duration>01:11:55</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The lovely and hilarious Casey Wilson and June Diane Raphael come on the show to talk about their weird froyo habits, everyone compares their workout routines and their new movie Ass Backwards!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Andrew W.K. and Marky Ramone</title>
+			<pubDate>Tue, 15 Oct 2013 15:59:40 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[1a958a691887d0c6d62ff03cf49d8768]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/andrew-w-k-and-marky-ramone]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2510017" />
+			<description><![CDATA[<p>Andrew W.K. and Marky Ramone stop by the Nerdist podcast before their show at the Fonda Theater in Los Angeles TONIGHT! Andrew talks about living life with a positive attitude, Marky tells stories from The Ramones days, and they talk about their tour!</p>]]></description>
+			<enclosure length="30053729" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_423_-_Andrew_WK_and_Marky_Ramone.mp3" />
+			<itunes:duration>01:02:30</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Andrew W.K. and Marky Ramone stop by the Nerdist podcast before their show at the Fonda Theater in Los Angeles TONIGHT! Andrew talks about living life with a positive attitude, Marky tells stories from The Ramones days, and they talk about their tour!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Daniel Radcliffe</title>
+			<pubDate>Mon, 14 Oct 2013 08:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[dc8f3b8c15152fd7c7676a79e38ec785]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/daniel-radcliffe]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2508131" />
+			<description><![CDATA[<p>The amazing Daniel Radcliffe is on the Nerdist! He talks about his admiration for Tom Lehrer, watching inappropriate children's television, and his love of American football!</p>]]></description>
+			<enclosure length="37805110" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_422_-_Daniel_Radcliffe.mp3" />
+			<itunes:duration>01:18:39</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The amazing Daniel Radcliffe is on the Nerdist! He talks about his admiration for Tom Lehrer, watching inappropriate children's television, and his love of American football!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Nick Offerman Returns</title>
+			<pubDate>Fri, 11 Oct 2013 15:30:58 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[75f121c14ec72f75e281f5a3bf8e1ec7]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/nick-offerman-returns]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2505270" />
+			<description><![CDATA[<p>Nick Offerman returns to the podcast because he just can't get enough. He talks about his new book <em>Paddle Your Own Canoe: One Man's Fundamentals for Delicious Living</em>, describes what a cologne based on him would smell like, and tells a joke so funny it almost kills Chris.</p>]]></description>
+			<enclosure length="32264211" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_-_Nick_Offerman_2.mp3" />
+			<itunes:duration>01:07:06</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Nick Offerman returns to the podcast because he just can't get enough. He talks about his new book Paddle Your Own Canoe: One Man's Fundamentals for Delicious Living, describes what a cologne based on him would smell like, and tells a joke so funny it...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Episode 420 w/ Doug Benson</title>
+			<pubDate>Thu, 10 Oct 2013 07:22:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[f7aa83337291c34804078b863d62fb63]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/420-with-doug-benson]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2503652" />
+			<description><![CDATA[<p>It's the Nerdist episode #420, so who better to have on than Doug Benson? They talk about what they were like in high school, Doug's role in Captain EO and, of course, weed. </p>]]></description>
+			<enclosure length="32110748" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_420_-_Doug_Benson.mp3" />
+			<itunes:duration>01:06:47</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[It's the Nerdist episode #420, so who better to have on than Doug Benson? They talk about what they were like in high school, Doug's role in Captain EO and, of course, weed....]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Slash</title>
+			<pubDate>Wed, 09 Oct 2013 16:28:14 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[4e1b0279c74205aed4ed45597f6f7f99]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/slash]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2502541" />
+			<description><![CDATA[<p>Slash hangs out with Chris and Jonah to talk about his immense love and knowledge of dinosaurs, growing up in Laurel Canyon in the heyday of the music culture, and being a BMX biker!</p>]]></description>
+			<enclosure length="42215436" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_419_-_Slash.mp3" />
+			<itunes:duration>01:27:50</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Slash hangs out with Chris and Jonah to talk about his immense love and knowledge of dinosaurs, growing up in Laurel Canyon in the heyday of the music culture, and being a BMX biker!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Zero Charisma</title>
+			<pubDate>Tue, 08 Oct 2013 09:00:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[7b9771231e635e914517e3fb11aec3c7]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/zero-charisma]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2500899" />
+			<description><![CDATA[<p>The directos and star of the movie <em>Zero Charisma </em>(which is being distributed by Nerdist Industries!), Katie Graham, Andrew Mathews and Sam Eidson come on the podcast to talk about the making of their movie, what it means to actually be a nerd and Dungeons and Dragon</p>]]></description>
+			<enclosure length="35878834" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_418_-_Zero_Charisma.mp3" />
+			<itunes:duration>01:14:38</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The directos and star of the movie Zero Charisma (which is being distributed by Nerdist Industries!), Katie Graham, Andrew Mathews and Sam Eidson come on the podcast to talk about the making of their movie, what it means to actually be a nerd and...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Tom Hanks Returns</title>
+			<pubDate>Mon, 07 Oct 2013 07:30:00 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[fd372e68fa8e87edf9694b9cf0d60ca4]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/tom-hanks-returns]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2498971" />
+			<description><![CDATA[<p>Tom Hanks loves the podcast so much, he came back for me! Chris and Jonah sit down with Tom for a second time to discuss awful interview questions, his first time on The Tonight Show and his upcoming movie, Captain Phillips!</p>]]></description>
+			<enclosure length="27651639" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_417_-_Tom_Hanks_2.mp3" />
+			<itunes:duration>57:30</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Tom Hanks loves the podcast so much, he came back for me! Chris and Jonah sit down with Tom for a second time to discuss awful interview questions, his first time on The Tonight Show and his upcoming movie, Captain Phillips!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Adam Scott</title>
+			<pubDate>Fri, 04 Oct 2013 22:26:40 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[7488d6d36244c9652bc56eb9461b73b9]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/adam-scott]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2497519" />
+			<description><![CDATA[<p>Adam Scott is finally on the podcast. He helps add to the Nerdist Adam Scott Foley project, Matt and him talk about his role in <em>Star Trek</em>, and they talk about his new movie <em>A.C.O.D</em> and his show <em>The Greatest Event in Television History</em>!</p>]]></description>
+			<enclosure length="37459813" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_416_-_Adam_Scott.mp3" />
+			<itunes:duration>01:17:56</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[Adam Scott is finally on the podcast. He helps add to the Nerdist Adam Scott Foley project, Matt and him talk about his role in Star Trek, and they talk about his new movie A.C.O.D and his show The Greatest Event in Television History!...]]></itunes:subtitle>
+					</item>
+		<item>
+			<title>Tenacious D Returns</title>
+			<pubDate>Wed, 02 Oct 2013 18:36:45 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[164fb9ce725ad49d658790f9f534794d]]></guid>
+			<link><![CDATA[http://nerdist.libsyn.com/tenacious-d-returns]]></link>
+			<media:thumbnail url="http://assets.libsyn.com/item/2494149" />
+			<description><![CDATA[<p>The kings of rock, Jack Black and Kyle Gass, are back in the studio with The Nerdist! They talk about their upcoming Festival Supreme, their mutual obsession for <em>GTA V</em>, and they sing a couple of songs, with Chris joining them!</p>]]></description>
+			<enclosure length="37229722" type="audio/mpeg" url="http://www.podtrac.com/pts/redirect.mp3/traffic.libsyn.com/nerdist/Nerdist_415_-_Tenacious_D_Returns.mp3" />
+			<itunes:duration>01:17:27</itunes:duration>
+			<itunes:explicit>yes</itunes:explicit>
+			<itunes:keywords />
+			<itunes:subtitle><![CDATA[The kings of rock, Jack Black and Kyle Gass, are back in the studio with The Nerdist! They talk about their upcoming Festival Supreme, their mutual obsession for GTA V, and they sing a couple of songs, with Chris joining them!...]]></itunes:subtitle>
+					</item>
+	</channel>
+</rss>
