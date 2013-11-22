@@ -1,7 +1,6 @@
 <head>
   <title>Hark</title>
 
-  <script src="js/mediaelement-and-player.min.js"></script>
   <link rel="stylesheet" href="css/mediaelementplayer.css" />
 
 </head>
@@ -78,7 +77,9 @@
   <ul id="items">
     {{#each items}}
       <li>
-        <a href="#" file="{{file.0.url}}" >{{title}}</a>
+        <a href="#" file="{{file.0.url}}" class="item-play">{{title}}</a>
+        <span>{{date}}</span>
+        <a href="#" id="{{_id}}" class="item-listened">Mark listened</a>
       </li>
     {{/each}}
   </ul>
@@ -102,6 +103,7 @@
 ---------------------------->
 
 <template name="player">
-  <p>PLAYER!</p>
-  <audio class="player-audio" src="#"></audio>
+  <section id="player">
+    <audio class="player-audio" src="http://feeds.thisamericanlife.org/~r/talpodcast/~5/o_Vb6IZzdfs/477.mp3"></audio>
+  </section>
 </template>
