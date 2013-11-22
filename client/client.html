@@ -19,18 +19,20 @@
 
     <section class="main">
       {{#if currentUser}}
-        {{> home}}
-        {{> timeline}}
-        {{> subscriptions}}
+        <section class="left">
+          {{> add}}
+          {{> subscriptions}}
+        </section>
+        <section class="right">
+          {{> timeline}}
+        </section>
       {{else}} 
         {{> greeting}}
       {{/if}}
     </section>
   </section>
 
-  {{#if currentUser}}
-    {{> notify}}
-  {{/if}}
+  {{> notify}}
 
   {{#if currentUser}}
     {{> player}}
@@ -47,12 +49,8 @@
 <!---------------------------
 -- TEMPLATE/HOME
 ---------------------------->
-<template name="home">
-  <p>http://feeds.thisamericanlife.org/talpodcast</p>
-  <p>http://nerdist.libsyn.com/rss</p>
-  <p>
-    <a id="update" href="#">Update</a>
-  </p>
+<template name="add">
+  <a id="update" href="#">Update</a>
   <form id="add-podcast-form">
     <input type="text" id="podcast-uri" placeholder="Enter a feed address." val="http://feeds.thisamericanlife.org/talpodc" />
     <button>Add</button>
@@ -89,7 +87,7 @@
 -- TEMPLATE/NOTIFICATIONS
 ---------------------------->
 <template name="notify">
-  <section id="notify">
+  <section id="notify" class="notify error-{{showHide}}">
     <p>Errors:</p>
     {{#each messages}}
       <p>{{this.message}}</p>

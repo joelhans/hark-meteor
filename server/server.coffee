@@ -1,11 +1,4 @@
 #############################
-# TODO
-#
-# Add error handling for already added feed.
-#
-#############################
-
-#############################
 # REQUIRES
 #############################
 
@@ -46,12 +39,12 @@ addFeed = (userId, url) ->
           details = 'Error adding this feed.'
           pushError userId, url, details
         if feedId
-          refreshFeed feeds.findOne {_id: feedId}
+          feed = feeds.findOne {_id: feedId}
+          refreshFeed feed, 'new'
     .run()
 
 # REFRESH FEED
-
-refreshFeed = (feed) ->
+refreshFeed = (feed, source) ->
   count = 0
 
   request(feed.url)
@@ -61,17 +54,23 @@ refreshFeed = (feed) ->
       item    = null
       ++count
 
-      # A silly hack to mark only the most recent item as 'unlistened.'
-      if count is 1
+      if source is 'new'
+        # A silly hack to mark only the most recent item as 'unlistened.'
+        if count is 1
+          while item = stream.read()
+            addItem feed, item, false
+        else if count >= 2
+          while item = stream.read()
+            addItem feed, item, true
+      else if source is 'update'
         while item = stream.read()
           addItem feed, item, false
-      else if count >= 2
-        while item = stream.read()
-          addItem feed, item, true
 
 # REFRESH FEEDS
 refreshFeeds = () ->
-  feeds.find({userId: Meteor.userId()}).forEach(refreshFeed)
+  subs = feeds.find({userId: Meteor.userId()})
+  subs.forEach (feed) ->
+    refreshFeed feed, 'update'
 
 # ADD ITEM
 addItem = (feed, item, listened) ->
@@ -126,6 +125,12 @@ Meteor.startup () ->
 
     update: () ->
       refreshFeeds()
+
+    markListened: (id) ->
+      items.update({userId: Meteor.userId(), _id: id}, {$set: {listened: true}})
+
+    dismissError: () ->
+      messages.remove {userId: Meteor.userId()}
 
 #############################
 # PUBLISH

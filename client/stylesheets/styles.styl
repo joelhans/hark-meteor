@@ -1,9 +1,26 @@
 
 orange = rgb(226, 132, 109)
 
+html,
+body
+  overflow: hidden
+
 #container
+  position: relative
   max-width: 960px
   margin: 0 auto
+
+.main
+  position: relative
+
+.left
+  float: left
+  width: 200px
+  overflow-x: hidden
+  overflow-y: hidden
+
+.right
+  margin-left: 220px
 
 .home-logo
   display: block
@@ -12,7 +29,6 @@ orange = rgb(226, 132, 109)
   height: 200px
   margin: 100px auto 40px auto
   background: orange
-  background-size: 110px 110px
   border-radius: 50%
 
 .home-logo img
@@ -24,18 +40,17 @@ orange = rgb(226, 132, 109)
 .header-logo
   display: block
   position: relative 
-  width: 100px
-  height: 100px
+  width: 70px
+  height: 70px
   margin: 0
   background: orange
-  background-size: 40px 40px
   border-radius: 50%
 
 .header-logo img
   position: relative
-  left: 25px
-  top: 15px 
-  width: 50px
+  left: 18px
+  top: 12px 
+  width: 32px
 
 #login-buttons
   float: right
@@ -47,12 +62,17 @@ orange = rgb(226, 132, 109)
  */
 
 #notify
-  display: none
   position: absolute
   right: 0px
-  bottom: 0px
+  bottom: 30px
   background-color: red
   color: white
+
+#notify.error-false
+  right: -2000px
+
+#notify.error-true
+  right: 0px
 
 /*
  * Player

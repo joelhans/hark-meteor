@@ -16,7 +16,7 @@ Template.player.rendered = () ->
   playerAudio = new MediaElementPlayer '.player-audio', {
     audioWidth: 800
     audioHeight: 30
-    enablePluginDebug: true 
+    startVolume: 0.5
     plugins: ['flash','silverlight']
     pluginPath: 'js/'
     flashName: 'flashmediaelement.swf'
@@ -28,10 +28,10 @@ Template.player.rendered = () ->
 #############################
 
 # Get current user.
-Template.home.user = ->
+Template.add.user = ->
   Meteor.user()
 
-Template.home.events =
+Template.add.events =
   # Add new podcast.
   'click #add-podcast-form button': (e) ->
     e.preventDefault()
@@ -53,8 +53,7 @@ Template.timeline.events =
   # Mark as listened.
   'click .item-listened': (e) ->
     e.preventDefault()
-    console.log 'hi'
-    console.log this._id
+    Meteor.call 'markListened', this._id
 
   'click .item-play': (e) ->
     e.preventDefault()
@@ -74,9 +73,16 @@ Template.timeline.items = () ->
 
 Template.notify.helpers
   messages: () -> 
-    $('#notify').show() 
+    if messages.find({userId: Meteor.userId()}).fetch()[0]? is true
+      Session.set 'errorShow', true
+    else
+      Session.set 'errorShow', false
     return messages.find({userId: Meteor.userId()}).fetch()
 
+Template.notify.showHide = () ->
+  return Session.equals('errorShow', true) ? 'hidden' : ''
+
 Template.notify.events =
-  'click #notify': (e) ->
-    messages.remove {userId: Meteor.userId()}
+  'click': (e) ->
+    Session.set 'errorShow', false
+    Meteor.call 'dismissError'
