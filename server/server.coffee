@@ -71,14 +71,12 @@ refreshFeed = (feed) ->
 
 # REFRESH FEEDS
 refreshFeeds = () ->
-  console.log 'Starting update.'
   feeds.find({userId: Meteor.userId()}).forEach(refreshFeed)
 
 # ADD ITEM
 addItem = (feed, item, listened) ->
     Fiber () ->
       if items.findOne {feedId: feed._id, guid: item.guid}
-        console.log 'That item already exists.'
         return false
       items.insert
         feedId   : feed._id

@@ -1,5 +1,9 @@
 <head>
   <title>Hark</title>
+
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="css/mediaelementplayer.css" />
+
 </head>
 
 <body>
@@ -25,7 +29,13 @@
     </section>
   </section>
 
-  {{> notify}}
+  {{#if currentUser}}
+    {{> notify}}
+  {{/if}}
+
+  {{#if currentUser}}
+    {{> player}}
+  {{/if}}
 </body>
 
 <template name="greeting">
@@ -65,7 +75,7 @@
 ---------------------------->
 <template name="timeline">
   <p>Podcasts:</p>
-  <ul>
+  <ul id="items">
     {{#each items}}
       <li>
         <a href="#" file="{{file.0.url}}" >{{title}}</a>
@@ -87,4 +97,11 @@
   </section>
 </template>
 
+<!---------------------------
+-- TEMPLATE/PLAYER
+---------------------------->
 
+<template name="player">
+  <p>PLAYER!</p>
+  <audio class="player-audio" src="#"></audio>
+</template>

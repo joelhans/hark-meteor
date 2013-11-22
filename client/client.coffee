@@ -2,6 +2,11 @@ feeds = new Meteor.Collection 'feeds'
 items = new Meteor.Collection 'items'
 messages  = new Meteor.Collection 'messages'
 
+Deps.autorun () ->
+  Meteor.subscribe 'messages'
+  Meteor.subscribe 'feeds'
+  Meteor.subscribe 'items'
+
 newPodcast = () ->
   input = document.getElementById('podcast-uri')
   if input.value isnt ''
@@ -28,10 +33,7 @@ Template.subscriptions.feeds = () ->
 Template.timeline.items = () ->
   return items.find({userId: Meteor.userId(), listened: false}).fetch()
 
-Deps.autorun () ->
-  Meteor.subscribe 'messages'
-  Meteor.subscribe 'feeds'
-  Meteor.subscribe 'items'
+
 
 Template.notify.helpers
   messages: () -> 
