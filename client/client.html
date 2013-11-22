@@ -4,24 +4,33 @@
 
 <body>
   <section id="container">
-    {{loginButtons}}
+    <header>
+      {{#if currentUser}}
+        <div class="header-logo">
+          <img src="img/logo.svg" />
+        </div>
+      {{/if}}
+
+      {{loginButtons}}
+    </header>
 
     <section class="main">
       {{#if currentUser}}
         {{> home}}
-        {{> subscriptions}}
         {{> timeline}}
-        {{> notify}}
+        {{> subscriptions}}
       {{else}} 
         {{> greeting}}
       {{/if}}
     </section>
   </section>
+
+  {{> notify}}
 </body>
 
 <template name="greeting">
   <div class="home-logo">
-    <img src="img/home_logo.svg" />
+    <img src="img/logo.svg" />
   </div>
   <h1>Hark is your personal radio station.</h1>
 </template>
@@ -30,9 +39,11 @@
 -- TEMPLATE/HOME
 ---------------------------->
 <template name="home">
-  <p>Thanks for logging in, {{user._id}}.</p>
   <p>http://feeds.thisamericanlife.org/talpodcast</p>
   <p>http://nerdist.libsyn.com/rss</p>
+  <p>
+    <a id="update" href="#">Update</a>
+  </p>
   <form id="add-podcast-form">
     <input type="text" id="podcast-uri" placeholder="Enter a feed address." val="http://feeds.thisamericanlife.org/talpodc" />
     <button>Add</button>
@@ -57,7 +68,7 @@
   <ul>
     {{#each items}}
       <li>
-        {{title}}
+        <a href="#" file="{{file.0.url}}" >{{title}}</a>
       </li>
     {{/each}}
   </ul>
@@ -67,10 +78,13 @@
 -- TEMPLATE/NOTIFICATIONS
 ---------------------------->
 <template name="notify">
-  <p>Errors:</p>
-  {{#each messages}}
-    <p>{{this.message}}</p>
-  {{/each}}
+  <section id="notify">
+    <p>Errors:</p>
+    {{#each messages}}
+      <p>{{this.message}}</p>
+    {{/each}}
+    <p>Click to dismiss.</p>
+  </section>
 </template>
 
 

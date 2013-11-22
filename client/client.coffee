@@ -18,11 +18,15 @@ Template.home.events =
     e.preventDefault()
     newPodcast()
 
+  'click #update': (e) ->
+    e.preventDefault()
+    Meteor.call 'update'
+
 Template.subscriptions.feeds = () ->
   return feeds.find({userId: Meteor.userId()}).fetch()
 
 Template.timeline.items = () ->
-  return items.find({userId: Meteor.userId()}).fetch()
+  return items.find({userId: Meteor.userId(), listened: false}).fetch()
 
 Deps.autorun () ->
   Meteor.subscribe 'messages'
@@ -31,4 +35,9 @@ Deps.autorun () ->
 
 Template.notify.helpers
   messages: () -> 
+    $('#notify').show() 
     return messages.find({userId: Meteor.userId()}).fetch()
+
+Template.notify.events =
+  'click #notify': (e) ->
+    messages.remove {userId: Meteor.userId()}

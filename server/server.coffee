@@ -26,12 +26,14 @@ messages = new Meteor.Collection 'messages'
 # FUNCTIONS
 #############################
 
+# ADD FEED
 addFeed = (userId, url) ->
   return (meta) ->
     Fiber () ->
       # Ensure the user hasn't already added the feed. 
       if feeds.findOne {userId: userId, url: url}
-        console.log 'You already added that feed.'
+        details = 'You already added this feed.'
+        pushError userId, url, details
         return false
   
       # If the feed doesn't yet exist, go ahead and add it.
@@ -45,31 +47,38 @@ addFeed = (userId, url) ->
           pushError userId, url, details
         if feedId
           refreshFeed feeds.findOne {_id: feedId}
-          console.log 'Feed added:',meta.title
     .run()
 
+# REFRESH FEED
+
 refreshFeed = (feed) ->
+  count = 0
+
   request(feed.url)
     .pipe(new FeedParser())
     .on 'readable', () ->
-      stream = this.read()
-      item = null
+      stream  = this
+      item    = null
+      ++count
 
-      console.log stream
+      # A silly hack to mark only the most recent item as 'unlistened.'
+      if count is 1
+        while item = stream.read()
+          addItem feed, item, false
+      else if count >= 2
+        while item = stream.read()
+          addItem feed, item, true
 
-      for i in [0..20]
-        console.log stream[i].title
-      # while item = stream.read()
-      #  addItem(feed, item)
-
+# REFRESH FEEDS
 refreshFeeds = () ->
-  feeds.find {userId: this.userId}
-    .fetch()
-    .forEach refreshFeed(this)
+  console.log 'Starting update.'
+  feeds.find({userId: Meteor.userId()}).forEach(refreshFeed)
 
-addItem = (feed, item) ->
+# ADD ITEM
+addItem = (feed, item, listened) ->
     Fiber () ->
-      if items.findOne {feedId: feed._id, guid: items.guid}
+      if items.findOne {feedId: feed._id, guid: item.guid}
+        console.log 'That item already exists.'
         return false
       items.insert
         feedId   : feed._id
@@ -81,7 +90,7 @@ addItem = (feed, item) ->
         date     : item.date
         link     : item.link
         file     : item.enclosures
-        listened : false
+        listened : listened
     .run()
 
 pushError = (userId, url, details) ->
@@ -116,6 +125,9 @@ Meteor.startup () ->
                     ', or try again later.'
           pushError userId, url, details
         .on 'meta', addFeed(userId, url)
+
+    update: () ->
+      refreshFeeds()
 
 #############################
 # PUBLISH
