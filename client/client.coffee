@@ -23,6 +23,10 @@ Template.player.rendered = () ->
     silverlightName: 'silverlightmediaelement.xap'
   }
 
+Template.timeline.rendered = () ->
+  $('.moment').each (i) ->
+    $(this).text(moment($(this).text()).fromNow())
+
 #############################
 # HOME
 #############################

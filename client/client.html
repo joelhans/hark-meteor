@@ -1,6 +1,8 @@
 <head>
   <title>Hark</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,700italic">
+
   <link rel="stylesheet" href="css/mediaelementplayer.css" />
 
 </head>
@@ -74,10 +76,15 @@
   <p>Podcasts:</p>
   <ul id="items">
     {{#each items}}
-      <li>
+      <li class="item">
         <a href="#" file="{{file.0.url}}" class="item-play">{{title}}</a>
-        <span>{{date}}</span>
-        <a href="#" id="{{_id}}" class="item-listened">Mark listened</a>
+        <div class="meta">
+          <span>{{feed}}</span>
+          |
+          <span class="moment" title="published: {{date}}">{{date}}</span>
+          |
+          <a href="#" id="{{_id}}" class="item-listened">Mark listened</a>
+        </div> 
       </li>
     {{/each}}
   </ul>
