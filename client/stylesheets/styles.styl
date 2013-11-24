@@ -6,6 +6,9 @@ purple = rgb(42, 8, 61)
 white  = rgb(242, 242, 242)
 red    = rgb(237, 91, 71)
 
+*, *:before, *:after
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+
 html,
 body
   height: 100%
@@ -76,12 +79,23 @@ body
 /*
  * Feeds
  */
- 
+
+.feeds
+  white-space: nowrap
+
 .feeds li
+  position: relative
+  width: 200px
   margin-bottom: 1rem
 
+.feed-view
+  width: 180px
+  overflow: hidden
+  display: block
+  text-overflow: ellipsis
+
 .feed-destroy 
-  float: right
+  absolute: top 0px right 0px
   opacity: 0.2
   transition-property: opacity
   transition-duration: 0.2s
@@ -122,20 +136,24 @@ body
  */
 
 .notify
-  display: none
+  opacity: 0
   position: absolute
   top: 60px
-  left: 0px
-  max-width: 500px
+  left: 50%
+  margin-left: -250px
+  width: 500px
   background-color: red
   color: white
   padding: 20px
   border-radius: 2px
-  transition-property: opacity
-  transition-duration: 0.2s
+  transition-property: opacity, top
+  transition-duration: 0.4s
+  &:hover
+    cursor: pointer
 
-.error-true
-  display: block
+.error-show
+  opacity: 1
+  top: 140px
 
 /*
  * Player

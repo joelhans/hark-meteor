@@ -8,7 +8,6 @@ Installation details incoming.
 
 1. Video capability.
 2. Ability to load more items in an individual feed.
-8. Prettier messages.
 9. Overall pretty-ness.
 10. Search.
 

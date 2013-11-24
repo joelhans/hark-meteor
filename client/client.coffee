@@ -28,6 +28,7 @@ Router.map () ->
     path: '/feed/:_id'
     load: () ->
       Session.set 'feedId', this.params._id
+      Session.set 'page', 0
   }
   
 #############################
@@ -55,6 +56,7 @@ Template.add.events =
 Template.timeline.items = () ->
   return getItems(Meteor.userId(), {
     feedId: Session.get 'feedId'
+    page: Session.get 'page'
   }).map (item) ->
     return item
 
@@ -82,6 +84,12 @@ Template.timeline.events =
   'click .item-add-playlist': (e) ->
     e.preventDefault()
     Meteor.call 'playlistAdd', this
+
+  # Load more.
+  'click .load-more': (e) ->
+    console.log Session.get 'page'
+    Session.set('page', (Session.get('page') || 0) + 1)
+    console.log Session.get 'page'
 
 #############################
 # FEEDS
@@ -178,7 +186,6 @@ Template.player.rendered = () ->
           playAudio playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0]
   }
 
-
 Template.playing.current = () ->
   return sync.find({userId: Meteor.userId()}).fetch()
 
@@ -197,8 +204,12 @@ Template.notify.helpers
       Session.set 'errorShow', false
     return messages.find({userId: Meteor.userId()}).fetch()
 
-Template.notify.showHide = () ->
-  return Session.equals('errorShow', true) ? 'hidden' : ''
+Template.notify.rendered = () ->
+  $notify = $(this.find('.notify'))
+  Meteor.defer () ->
+    if Session.equals 'errorShow', true
+      console.log $notify.outerWidth()
+      $notify.addClass 'error-show'
 
 Template.notify.events =
   'click': (e) ->
