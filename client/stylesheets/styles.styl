@@ -1,16 +1,24 @@
+@import 'nib'
+
 orange = rgb(226, 132, 109)
 teal   = rgb(58, 128, 130)
 purple = rgb(42, 8, 61)
 white  = rgb(242, 242, 242)
+red    = rgb(237, 91, 71)
 
 html,
 body
-  overflow: hidden
+  height: 100%
+  overflow-x: hidden
+  margin: 0
+
+body
+  overflow-y: scroll
 
 #container
   position: relative
   max-width: 960px
-  margin: 0 auto
+  margin: 20px auto 0 auto
 
 .main
   position: relative
@@ -65,30 +73,69 @@ body
   background-color: orange
   border-radius: 2px
 
+/*
+ * Feeds
+ */
+ 
+.feeds li
+  margin-bottom: 1rem
+
+.feed-destroy 
+  float: right
+  opacity: 0.2
+  transition-property: opacity
+  transition-duration: 0.2s
+
+.feed:hover .feed-destroy
+  opacity: 1  
 
 /*
  * Items
  */
 
-.item .metadata
+#items
+  float: left
+  width: 75%
+  list-style-type: none
+
+.item
+  position: relative
+  margin: 40px 0 40px 0
+  &:first-of-type
+    margin: 0px 0 40px 0
+  
+.item .meta
   display: block
+  opacity: 0.2
+  transition-property: opacity
+  transition-duration: 0.2s
+  
+.item:hover .meta
+  opacity: 1
+
+.playlist
+  float: right
+  width: 25%
 
 /*
  * Errors notifications
  */
 
-#notify
+.notify
+  display: none
   position: absolute
-  right: 0px
-  bottom: 30px
+  top: 60px
+  left: 0px
+  max-width: 500px
   background-color: red
   color: white
+  padding: 20px
+  border-radius: 2px
+  transition-property: opacity
+  transition-duration: 0.2s
 
-#notify.error-false
-  right: -2000px
-
-#notify.error-true
-  right: 0px
+.error-true
+  display: block
 
 /*
  * Player

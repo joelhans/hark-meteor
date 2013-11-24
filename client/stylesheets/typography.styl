@@ -1,5 +1,44 @@
+@import 'nib'
+
+orange = rgb(226, 132, 109)
+teal   = rgb(58, 128, 130)
+purple = rgb(42, 8, 61)
+white  = rgb(242, 242, 242)
+
+font-size(_size)
+  if unit(_size) == 'rem'
+    font-size (_size*10)px
+  font-size _size
+  line-height _size*1.5
+
+
+body
+  font-size: 100%;
+
 p,
 div,
 li,
 a
   font-family: 'Lato'
+  font-size: 1rem
+
+p
+  margin: 0 0 1.5rem 0
+  &:last-of-type
+    margin: 0
+
+a
+  color: purple
+  text-decoration: none
+  transition-property: color
+  transition-duration: 0.2s
+  &:hover
+    color: orange
+
+h1
+  font-size 1.6rem
+  margin: 0px
+
+ul
+  list-style-type: none
+  padding: 0

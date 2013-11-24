@@ -12,3 +12,4 @@ stylus
 npm
 jquery
 moment
+iron-router

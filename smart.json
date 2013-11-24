@@ -1,6 +1,7 @@
 {
   "packages": {
     "npm": {},
-    "moment": {}
+    "moment": {},
+    "iron-router": {}
   }
 }

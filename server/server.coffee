@@ -5,15 +5,7 @@
 FeedParser = Meteor.require 'feedparser'
 request    = Meteor.require 'request'
 Fiber      = Meteor.require 'fibers'
-Future     = Meteor.require 'fibers/future'
-
-#############################
-# COLLECTIONS
-#############################
-
-feeds = new Meteor.Collection 'feeds'
-items = new Meteor.Collection 'items'
-messages = new Meteor.Collection 'messages'
+urlParser  = Meteor.require 'url'
 
 #############################
 # FUNCTIONS
@@ -79,6 +71,7 @@ addItem = (feed, item, listened) ->
         return false
       items.insert
         feedId   : feed._id
+        feed     : feed.title
         userId   : feed.userId
         title    : item.title
         summary  : item.summary
@@ -108,6 +101,15 @@ Meteor.startup () ->
 
     add: (url) ->
       userId = Meteor.userId()
+      parsed = urlParser.parse url
+
+      if parsed.protocol isnt 'http:' and parsed.protocol isnt 'https:'
+        # This is triggered on a bad prototcol. 
+        details = 'The URL must begin with "http://" or "https://". ' +
+                  'Please check it for accuracy.'
+        pushError userId, url, details
+        return
+
       request(url)
         .on 'error', (err) ->
           # This is triggered on a prototcol error, from request.
@@ -119,16 +121,35 @@ Meteor.startup () ->
           # This is triggered by feedparser if it's not XML.
           details = 'There was an error adding feed '+url+'. ' +
                     'Check you entered the URL correctly' +
-                    ', or try again later.'
+                    ', or try again later. ' + err
           pushError userId, url, details
         .on 'meta', addFeed(userId, url)
 
     update: () ->
       refreshFeeds()
 
+    destroy: (feed) ->
+      feeds.remove({_id: feed._id})
+      items.remove({userId: Meteor.userId(), feedId: feed._id})
+
     markListened: (id) ->
       items.update({userId: Meteor.userId(), _id: id}, {$set: {listened: true}})
 
+    markUnListened: (id) ->
+      items.update({userId: Meteor.userId(), _id: id}, {$set: {listened: false}})
+    
+    sync: (playing, progress) ->
+      sync.upsert({userId: Meteor.userId()}, {$set: {userId: Meteor.userId(), playing: playing, progress: progress}})
+
+    playlistAdd: (item) ->
+      playlists.upsert({userId: Meteor.userId()}, {$set: {userId: Meteor.userId()}, $addToSet: {playlist: item}})
+
+    playlistDestroy: (item) ->
+      playlists.upsert({userId: Meteor.userId()}, {$set: {userId: Meteor.userId()}, $pull: {playlist: item}})
+    
+    playlistClear: (item) ->
+      playlists.upsert({userId: Meteor.userId()}, {$set: {userId: Meteor.userId()}, $pull: {playlist: {userId: Meteor.userId}}})
+    
     dismissError: () ->
       messages.remove {userId: Meteor.userId()}
 
@@ -141,5 +162,11 @@ Meteor.publish 'messages', () ->
 Meteor.publish 'feeds', () ->
   return feeds.find()
 
-Meteor.publish 'items', () ->
-  return items.find()
+Meteor.publish 'items', (params) ->
+  return getItems(this.userId, params)
+
+Meteor.publish 'sync', () ->
+  return sync.find()
+
+Meteor.publish 'playlists', () ->
+  return playlists.find()

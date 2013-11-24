@@ -1,3 +1,4 @@
 {
-  "feedparser": "0.16.3"
+  "feedparser": "0.16.3",
+  "nib": "1.0.1"
 }

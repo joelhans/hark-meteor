@@ -3,7 +3,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,700italic">
 
-  <link rel="stylesheet" href="css/mediaelementplayer.css" />
+  <link rel="stylesheet" href="/css/mediaelementplayer.css" />
 
 </head>
 
@@ -12,7 +12,7 @@
     <header>
       {{#if currentUser}}
         <div class="header-logo">
-          <img src="img/logo.svg" />
+          <img src="/img/logo.svg" />
         </div>
       {{/if}}
 
@@ -22,11 +22,13 @@
     <section class="main">
       {{#if currentUser}}
         <section class="left">
+          {{> playing}}
           {{> add}}
           {{> subscriptions}}
         </section>
         <section class="right">
           {{> timeline}}
+          {{> playlist}}
         </section>
       {{else}} 
         {{> greeting}}
@@ -43,13 +45,13 @@
 
 <template name="greeting">
   <div class="home-logo">
-    <img src="img/logo.svg" />
+    <img src="/img/logo.svg" />
   </div>
   <h1>Hark is your personal radio station.</h1>
 </template>
 
 <!---------------------------
--- TEMPLATE/HOME
+-- TEMPLATE/ADD
 ---------------------------->
 <template name="add">
   <a id="update" href="#">Update</a>
@@ -60,34 +62,77 @@
 </template>
 
 <!---------------------------
+-- TEMPLATE/PLAYING
+---------------------------->
+<template name="playing">
+  <section class="playing">
+    {{#if current}}
+      <ul> 
+        <li>{{current.0.playing.title}}</li>
+        <li>{{current.0.playing.feed}}</p>
+      </ul>
+    {{else}}
+      <p>Nothing playing!</p>
+    {{/if}}
+  </section>
+</template>
+
+<!---------------------------
 -- TEMPLATE/SUBSCRIPTIONS
 ---------------------------->
 <template name="subscriptions">
-  <p>Your feeds:</p>
+  <ul class="feeds">
+    <li><a href="/" class="feed-view">All</a></li>
   {{#each feeds}}
-    <p>{{title}}</p>
+    <li class="feed">
+      <a href="/feed/{{_id}}" class="feed-view">{{title}}</a>
+      <a href="#" class="feed-destroy">x</a>
+    </li>
   {{/each}}
+  </ul>
 </template>
 
 <!---------------------------
 -- TEMPLATE/TIMELINE
 ---------------------------->
 <template name="timeline">
-  <p>Podcasts:</p>
   <ul id="items">
     {{#each items}}
       <li class="item">
-        <a href="#" file="{{file.0.url}}" class="item-play">{{title}}</a>
+        <h1>
+          <a href="#" id="{{_id}}" file="{{file.0.url}}" class="item-play">{{title}}</a>
+        </h1>
         <div class="meta">
           <span>{{feed}}</span>
           |
-          <span class="moment" title="published: {{date}}">{{date}}</span>
+          <span class="moment" date="{{date}}" title="published: {{date}}">{{date}}</span>
           |
+          {{#if listened}}
+          <a href="#" id="{{_id}}" class="item-unlistened">Mark unlistened</a>
+          {{else}}
           <a href="#" id="{{_id}}" class="item-listened">Mark listened</a>
+          {{/if}}
+          |
+          <a href="#" class="item-add-playlist">Add to playlist</a>
         </div> 
       </li>
     {{/each}}
   </ul>
+</template>
+
+<template name="playlist">
+  <section class="playlist">
+    <ul>
+      <a href="#" class="playlist-clear">Clear</a>
+      {{#each list.0.playlist}}
+        <li>
+          <a href="#" class="playlist-item">{{title}}</a>
+          | {{feed}}
+          |
+          <a href="#" class="playlist-destroy">x</a> 
+        </li>
+      {{/each}}
+  </section>
 </template>
 
 <!---------------------------
@@ -99,7 +144,7 @@
     {{#each messages}}
       <p>{{this.message}}</p>
     {{/each}}
-    <p>Click to dismiss.</p>
+    <p>Click anywhere on this message to dismiss.</p>
   </section>
 </template>
 

@@ -3,7 +3,8 @@
   "dependencies": {
     "basePackages": {
       "npm": {},
-      "moment": {}
+      "moment": {},
+      "iron-router": {}
     },
     "packages": {
       "npm": {
@@ -15,6 +16,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.2.1",
         "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       }
     }
   }
