@@ -133,9 +133,6 @@ Template.playlist.events =
 Meteor.subscribe 'sync', () ->
   Session.set 'playing', sync.find({userId: Meteor.userId()}).fetch()[0].playing
   Session.set 'progress', sync.find({userId: Meteor.userId()}).fetch()[0].progress
-  playerAudio.pause()
-  file = Session.get('playing').file[0].url
-  playerAudio.setSrc file, type: 'audio/mp3'
 
 # Play audio!
 playAudio = (data) ->
@@ -185,6 +182,11 @@ Template.player.rendered = () ->
         if $('.playlist ul li').length
           playAudio playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0]
   }
+
+  Meteor.defer () ->
+    playerAudio.pause()
+    file = Session.get('playing').file[0].url
+    playerAudio.setSrc file, type: 'audio/mp3'
 
 Template.playing.current = () ->
   return sync.find({userId: Meteor.userId()}).fetch()

@@ -10,7 +10,7 @@ Installation details incoming.
 2. Ability to load more items in an individual feed.
 9. Overall pretty-ness.
 10. Search.
+11. Responsive/mobile layout.
 
 ## FIXES
 
-1. On load, sometimes there is a "Cannot call method 'pause' of null," related to loading a sync item into the player. 
