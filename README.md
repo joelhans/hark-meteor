@@ -6,7 +6,6 @@ Installation details incoming.
 
 ## TODO
 
-1. Video capability.
 2. Ability to load more items in an individual feed.
 9. Overall pretty-ness.
 10. Search.
@@ -14,3 +13,4 @@ Installation details incoming.
 
 ## FIXES
 
+1. On playlist advance, need to auto-play the next podcast.

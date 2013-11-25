@@ -105,6 +105,14 @@ Template.subscriptions.events =
     if window.confirm "Really remove " + this.title + "?"
       Meteor.call 'destroy', this
 
+# Size the left sidebar according to the window height.
+Template.subscriptions.rendered = () ->
+  $('.left').height $(window).height() - 160
+
+# Re-trigger that on window re-size.
+$(window).resize () ->
+  $('.left').height $(window).height() - 160
+
 #############################
 # PLAYLIST
 #############################

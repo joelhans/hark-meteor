@@ -9,24 +9,21 @@
 
 <body>
   <section id="container">
-    <header>
-      {{#if currentUser}}
-        <div class="header-logo">
-          <img src="/img/logo.svg" />
-        </div>
-      {{/if}}
-
-      {{loginButtons}}
-    </header>
-
     <section class="main">
       {{#if currentUser}}
         <section class="left">
+
           {{> playing}}
           {{> add}}
           {{> subscriptions}}
         </section>
         <section class="right">
+          <header> 
+            <div class="header-logo">
+              <img src="/img/logo.svg" />
+            </div>
+            {{ loginButtons}}
+          </header>
           {{> timeline}}
           {{> playlist}}
         </section>
@@ -36,9 +33,8 @@
     </section>
   </section>
 
-  {{> notify}}
-
-  {{#if currentUser}}
+  {{# if currentUser}}
+    {{> notify}}
     {{> player}}
   {{/if}}
 </body>
