@@ -68,7 +68,7 @@ Template.timeline.events =
   # Play a podcast.
   'click .item-play': (e) ->
     e.preventDefault()
-    playAudio this
+    audioOrVideo this, true, false
   
   # Mark as listened.
   'click .item-listened': (e) ->
@@ -114,7 +114,7 @@ Template.playlist.list = () ->
 Template.playlist.events =
   # Play playlist item, cut it from the playlist.
   'click .playlist-item': (e) ->
-    playAudio this
+    audioOrVideo this, true, false
     Meteor.call 'playlistDestroy', this
 
   # Destroy.
@@ -135,15 +135,45 @@ Meteor.subscribe 'sync', () ->
   Session.set 'progress', sync.find({userId: Meteor.userId()}).fetch()[0].progress
 
 # Play audio!
-playAudio = (data) ->
+playAudio = (data, auto, sync) ->
   Session.set 'playing', data
-  Session.set 'progress', 1
+  console.log auto, sync
+  if sync is false
+    Session.set 'progress', 0
   Meteor.call 'sync', data, Session.get 'progress'
   playerAudio.pause()
   playerAudio.setSrc data.file[0].url, type: 'audio/mp3'
-  playerAudio.play()
+  if auto is true
+    playerAudio.play()
+  else
+    playerAudio.pause()
 
-playerAudio = updateProgress = null
+# Play audio!
+playVideo = (data, auto, sync) ->
+  Session.set 'playing', data
+  if sync is false
+    Session.set 'progress', 0
+  Meteor.call 'sync', data, Session.get 'progress'
+  playerVideo.pause()
+  playerVideo.setSrc data.file[0].url
+  if auto is true
+    playerVideo.play()
+  else
+    playerVideo.pause()
+
+# Help choose between video or audio
+audioOrVideo = (data, auto, sync) ->
+  file = data.file[0].url
+  if file.indexOf('mp4') isnt -1
+    $('.player-audio').hide()
+    $('.player-video').show()
+    playVideo data, auto
+  else
+    $('.player-video').hide()
+    $('.player-audio').show()
+    playAudio data, auto, sync
+
+playerAudio = playerVideo = updateProgress = null
 Template.player.rendered = () ->
   playerAudio = new MediaElementPlayer '.player-audio', {
     audioWidth: 800
@@ -157,6 +187,48 @@ Template.player.rendered = () ->
     success: (mediaElement, domObject) ->
       # On player load, set the progress from sync.
       mediaElement.addEventListener 'loadedmetadata', (e) ->
+        progress = Session.get 'progress'
+        file = Session.get('playing').file[0].url
+        mediaElement.setCurrentTime progress
+      
+      # On playing, update progress every 10 seconds, sync to server.
+      mediaElement.addEventListener 'playing', (e) ->
+        updateProgress = setInterval () ->
+          Session.set 'progress', e.target.currentTime
+          Meteor.call 'sync', Session.get('playing'), Session.get('progress')
+        , 10000
+
+      # On pause, halt the updateProgress interval.
+      mediaElement.addEventListener 'pause', (e) ->
+        clearInterval updateProgress
+     
+      # Mark an item as "listened" upon finishing it.
+      # If there is a playlist, destroy the current item,
+      # and move on to the next one.
+      mediaElement.addEventListener 'ended', (e) ->
+        clearInterval updateProgress
+        Meteor.call 'markListened', Session.get('playing')._id
+        Meteor.call 'playlistDestroy', Session.get 'playing'
+        if $('.playlist ul li').length
+          audioOrVideo playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0], false, false
+  }
+
+  playerVideo = new MediaElementPlayer '.player-video', {
+    defaultVideoWidth: 800
+    defaultVideoHeight: 450
+    videoWidth: 800
+    videoHeight: 450
+    enableAudiosize: true
+    startVolume: 0.5
+    plugins: ['flash','silverlight']
+    pluginPath: 'js/'
+    flashName: 'flashmediaelement.swf'
+    silverlightName: 'silverlightmediaelement.xap'
+
+    success: (mediaElement, domObject) ->
+      # On player load, set the progress from sync.
+      mediaElement.addEventListener 'loadedmetadata', (e) ->
+        console.log Session.get 'progress'
         progress = Session.get 'progress'
         file = Session.get('playing').file[0].url
         mediaElement.setCurrentTime progress
@@ -180,13 +252,13 @@ Template.player.rendered = () ->
         Meteor.call 'markListened', Session.get('playing')._id
         Meteor.call 'playlistDestroy', Session.get 'playing'
         if $('.playlist ul li').length
-          playAudio playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0]
+          audioOrVideo playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0], false, false
   }
 
   Meteor.defer () ->
     playerAudio.pause()
-    file = Session.get('playing').file[0].url
-    playerAudio.setSrc file, type: 'audio/mp3'
+    playerVideo.pause()
+    audioOrVideo Session.get 'playing', false, true
 
 Template.playing.current = () ->
   return sync.find({userId: Meteor.userId()}).fetch()
