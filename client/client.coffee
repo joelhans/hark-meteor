@@ -114,11 +114,11 @@ Template.subscriptions.events =
 
 # Size the left sidebar according to the window height.
 Template.subscriptions.rendered = () ->
-  $('.left').height $(window).height() - 160
+  $('.left').height $(window).height() - 50
 
 # Re-trigger that on window re-size.
 $(window).resize () ->
-  $('.left').height $(window).height() - 160
+  $('.left').height $(window).height() - 50
 
 #############################
 # PLAYLIST
