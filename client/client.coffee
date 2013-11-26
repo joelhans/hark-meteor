@@ -145,7 +145,6 @@ Meteor.subscribe 'sync', () ->
 # Play audio!
 playAudio = (data, auto, sync) ->
   Session.set 'playing', data
-  console.log auto, sync
   if sync is false
     Session.set 'progress', 0
   Meteor.call 'sync', data, Session.get 'progress'
@@ -182,8 +181,8 @@ audioOrVideo = (data, auto, sync) ->
     playAudio data, auto, sync
 
 playerAudio = playerVideo = updateProgress = null
-Template.player.rendered = () ->
-  playerAudio = new MediaElementPlayer '.player-audio', {
+
+playerOptions = 
     audioWidth: 800
     audioHeight: 30
     startVolume: 0.5
@@ -204,7 +203,7 @@ Template.player.rendered = () ->
         updateProgress = setInterval () ->
           Session.set 'progress', e.target.currentTime
           Meteor.call 'sync', Session.get('playing'), Session.get('progress')
-        , 10000
+        , 1000
 
       # On pause, halt the updateProgress interval.
       mediaElement.addEventListener 'pause', (e) ->
@@ -216,62 +215,25 @@ Template.player.rendered = () ->
       mediaElement.addEventListener 'ended', (e) ->
         clearInterval updateProgress
         Meteor.call 'markListened', Session.get('playing')._id
-        Meteor.call 'playlistDestroy', Session.get 'playing'
         if $('.playlist ul li').length
-          audioOrVideo playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0], false, false
-  }
+          audioOrVideo playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0], true, false
+        Meteor.call 'playlistDestroy', Session.get('playing')
 
-  playerVideo = new MediaElementPlayer '.player-video', {
-    defaultVideoWidth: 800
-    defaultVideoHeight: 450
-    videoWidth: 800
-    videoHeight: 450
-    enableAudiosize: true
-    startVolume: 0.5
-    plugins: ['flash','silverlight']
-    pluginPath: 'js/'
-    flashName: 'flashmediaelement.swf'
-    silverlightName: 'silverlightmediaelement.xap'
+# Establishing the players on template render.
+Template.player.rendered = () ->
+  playerAudio = new MediaElementPlayer '.player-audio', playerOptions
+  playerVideo = new MediaElementPlayer '.player-video', playerOptions
 
-    success: (mediaElement, domObject) ->
-      # On player load, set the progress from sync.
-      mediaElement.addEventListener 'loadedmetadata', (e) ->
-        console.log Session.get 'progress'
-        progress = Session.get 'progress'
-        file = Session.get('playing').file[0].url
-        mediaElement.setCurrentTime progress
-     
-      # On playing, update progress every 10 seconds, sync to server.
-      mediaElement.addEventListener 'playing', (e) ->
-        updateProgress = setInterval () ->
-          Session.set 'progress', e.target.currentTime
-          Meteor.call 'sync', Session.get('playing'), Session.get('progress')
-        , 10000
-
-      # On pause, halt the updateProgress interval.
-      mediaElement.addEventListener 'pause', (e) ->
-        clearInterval updateProgress
-     
-      # Mark an item as "listened" upon finishing it.
-      # If there is a playlist, destroy the current item,
-      # and move on to the next one.
-      mediaElement.addEventListener 'ended', (e) ->
-        clearInterval updateProgress
-        Meteor.call 'markListened', Session.get('playing')._id
-        Meteor.call 'playlistDestroy', Session.get 'playing'
-        if $('.playlist ul li').length
-          audioOrVideo playlists.find({userId: Meteor.userId()}).fetch()[0].playlist[0], false, false
-  }
-
+  # Wait until the DOM is finished loading, then pause the players. Then,
+  # grab the 'playing' data from the session, which should have been set
+  # by subscribing to the sync database.
   Meteor.defer () ->
     playerAudio.pause()
     playerVideo.pause()
-    audioOrVideo Session.get 'playing', false, true
+    audioOrVideo Session.get('playing'), false, true
 
+# Update the currently playing template on sync changes.
 Template.playing.current = () ->
-  return sync.find({userId: Meteor.userId()}).fetch()
-
-Template.player.current = () ->
   return sync.find({userId: Meteor.userId()}).fetch()
 
 #############################
