@@ -37,12 +37,19 @@ Router.map () ->
 
 Template.add.events =
   # Add new podcast.
-  'click #add-podcast-form button': (e) ->
+  'click #add-podcast-form .add': (e) ->
+    e.preventDefault()
+    $('#add-podcast-form .add, #update').hide()
+    $('#add-podcast-form .confirm, #add-podcast-form input').show()
+  
+  'click #add-podcast-form .confirm': (e) ->
     e.preventDefault()
     input = document.getElementById('podcast-uri')
     if input.value isnt ''
       Meteor.call 'add', input.value
     input.value = ''
+    $('#add-podcast-form .add, #update').show()
+    $('#add-podcast-form .confirm, #add-podcast-form input').hide()
   
   # Update podcasts.
   'click #update': (e) ->

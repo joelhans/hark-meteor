@@ -1,4 +1,5 @@
 @import 'nib'
+@import '_mixins'
 
 orange = rgb(226, 132, 109)
 teal   = rgb(58, 128, 130)
@@ -17,21 +18,38 @@ body
 
 body
   overflow-y: scroll
+  
+::selection, 
+::-moz-selection
+  background: red
+  color: white
+          
+::-webkit-scrollbar
+  width: 12px
+              
+::-webkit-scrollbar-track
+  border: 1px solid teal
+  border-radius: 10px
+                     
+::-webkit-scrollbar-thumb
+  border-radius: 10px 
+  border: 1px solid red
 
 #container
   position: relative
   max-width: 960px
   margin: 20px auto 0 auto
+  clearfix()
 
 .main
   position: relative
+  clearfix()
 
 .left
   position: fixed
   float: left
   width: 220px
   height: 400px
-  margin-top: 110px
   padding-right: 20px
   overflow-x: hidden
   overflow-y: hidden
@@ -81,11 +99,72 @@ header
   top: 12px 
   width: 32px
 
+/*
+ * Playing
+ */
+
+.playing  
+  margin-bottom(2rem)
+  white-space: nowrap
+
+.playing h1
+  margin-bottom(1rem)
+
+.playing ul li
+  margin-bottom(1rem)
+  overflow: hidden
+  display: block
+  text-overflow: ellipsis
+
+/*
+ * Add/update
+ */
+
+.add-update
+  relative()
+  height: 56px
+  margin-bottom(2rem)
+
+#add-podcast-form
+  float: left
+  width: 92px
+
+#add-podcast-form input
+  display: none
+  relative top -2px
+  padding: 12px
+
+#add-podcast-form button
+  absolute top -2px
+  background-color: orange
+  border-radius: 2px
+  border: 0px
+  transition-property: color, background-color
+  transition-duration: 0.2s
+  &:hover
+    color: white
+    cursor: pointer
+    background-color: purple
+
+#add-podcast-form button.add
+  padding: 14px 32px 14px 31px
+
+#add-podcast-form button.confirm
+  display: none
+  left: 107px
+  padding: 14px 17px 14px 18px
+
 #update
+  relative top 0px right -105px
   display: inline-block
   padding: 14px 20px 14px 20px
   background-color: orange
   border-radius: 2px
+  transition-property: color, background-color
+  transition-duration: 0.2s
+  &:hover
+    color: white
+    background-color: purple
 
 /*
  * Feeds

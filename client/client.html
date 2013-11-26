@@ -12,7 +12,6 @@
     <section class="main">
       {{#if currentUser}}
         <section class="left">
-
           {{> playing}}
           {{> add}}
           {{> subscriptions}}
@@ -50,11 +49,14 @@
 -- TEMPLATE/ADD
 ---------------------------->
 <template name="add">
-  <a id="update" href="#">Update</a>
-  <form id="add-podcast-form">
-    <input type="text" id="podcast-uri" placeholder="Enter a feed address." val="http://feeds.thisamericanlife.org/talpodc" />
-    <button>Add</button>
-  </form>
+  <section class="add-update">
+    <form id="add-podcast-form">
+      <input type="text" id="podcast-uri" placeholder="Enter a feed address." val="http://feeds.thisamericanlife.org/talpodc" />
+      <button class="add">Add</button>
+      <button class="confirm">Confirm</button>
+    </form>
+    <a id="update" href="#">Update</a>
+  </section>
 </template>
 
 <!---------------------------
@@ -62,6 +64,7 @@
 ---------------------------->
 <template name="playing">
   <section class="playing">
+    <h1>Now playing</h1>
     {{#if current}}
       <ul> 
         <li>{{current.0.playing.title}}</li>

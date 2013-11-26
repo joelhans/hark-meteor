@@ -1,0 +1,17 @@
+
+/* FONT SIZE
+
+  Usage: font-size(2rem)
+
+*/
+
+font-size(_size)
+  if unit(_size) == 'rem'
+    font-size (_size*16)px
+  font-size _size
+  line-height _size*1.5
+
+margin-bottom(_size)
+  if unit(_size) == 'rem'
+    margin-bottom (_size*16)px
+  margin-bottom _size

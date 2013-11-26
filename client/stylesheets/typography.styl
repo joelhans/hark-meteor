@@ -1,24 +1,21 @@
 @import 'nib'
+@import '_mixins'
 
 orange = rgb(226, 132, 109)
 teal   = rgb(58, 128, 130)
 purple = rgb(42, 8, 61)
 white  = rgb(242, 242, 242)
 
-font-size(_size)
-  if unit(_size) == 'rem'
-    font-size (_size*10)px
-  font-size _size
-  line-height _size*1.5
-
-
 body
   font-size: 100%;
 
+h1,
 p,
 div,
 li,
-a
+a,
+button,
+input
   font-family: 'Lato'
 
 p
@@ -41,4 +38,17 @@ h1
 
 ul
   list-style-type: none
+  margin: 0
   padding: 0
+
+.playing h1
+  font-size(1.125rem)
+  font-weight: 400
+  
+.playing ul li
+  font-size(0.875rem)
+  font-weight: 700
+
+button,
+input
+  font-size(1rem)
