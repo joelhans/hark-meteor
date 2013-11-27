@@ -67,10 +67,6 @@ Template.timeline.items = () ->
   }).map (item) ->
     return item
 
-Template.timeline.rendered = () ->
-  $('.moment').each (i) ->
-    $(this).text(moment($(this).attr('date')).fromNow())
-
 Template.timeline.events =
   # Play a podcast.
   'click .item-play': (e) ->
@@ -98,6 +94,24 @@ Template.timeline.events =
     Session.set('page', (Session.get('page') || 0) + 1)
     console.log Session.get 'page'
 
+Template.timeline.rendered = () ->
+  # Moment-ize all the dates in the timeline.
+  $('.moment').each (i) -> $(this).text(moment($(this).attr('date')).fromNow())
+
+  # Click on the logo, scroll to top.
+  $('.header-logo').click () -> $('body').stop().animate { scrollTop: '0' }
+
+# Header-related bits.
+$(document).scroll () ->
+  console.log $(document).scrollTop()
+  if $(document).scrollTop() > 53
+    $('header').addClass 'header-mini'
+    $('#items').css 'margin-top', 110
+    $('header').width $('#container').width() - 240
+  else
+    $('header').removeClass 'header-mini'
+    $('#items').css 'margin-top', ''
+
 #############################
 # FEEDS
 #############################
@@ -123,6 +137,7 @@ $(window).resize () ->
 #############################
 # PLAYLIST
 #############################
+
 Template.playlist.list = () ->
   return playlists.find({userId: Meteor.userId()}).fetch()
 
@@ -192,6 +207,8 @@ playerAudio = playerVideo = updateProgress = null
 playerOptions = 
     audioWidth: 800
     audioHeight: 30
+    videoWidth: 800
+    videoHeight: 450
     startVolume: 0.5
     plugins: ['flash','silverlight']
     pluginPath: 'js/'

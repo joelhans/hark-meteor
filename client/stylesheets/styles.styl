@@ -13,11 +13,11 @@ red    = rgb(237, 91, 71)
 html,
 body
   height: 100%
-  overflow-x: hidden
   margin: 0
 
 body
   overflow-y: scroll
+  background-color: white
   
 ::selection, 
 ::-moz-selection
@@ -54,7 +54,7 @@ body
   overflow-x: hidden
   overflow-y: hidden
   &:hover
-    overflow-y: scroll
+    overflow-y: auto
 
 .right
   margin-left: 240px
@@ -64,26 +64,6 @@ header
   height: 70px
   margin-bottom: 40px
   
-#login-buttons
-  float: right
-  position: relative
-  top: -35px
-  
-.home-logo
-  display: block
-  position: relative 
-  width: 200px
-  height: 200px
-  margin: 100px auto 40px auto
-  background: orange
-  border-radius: 50%
-
-.home-logo img
-  position: relative
-  left: 60px
-  top: 40px 
-  width: 80px
-
 .header-logo
   display: block
   position: relative 
@@ -92,12 +72,41 @@ header
   margin: 0
   background: orange
   border-radius: 50%
+  transition-property: width, height
+  transition-duration: 0.3s
 
 .header-logo img
   position: relative
   left: 18px
   top: 12px 
   width: 32px
+  transition-property: width, height, left, top
+  transition-duration: 0.3s
+
+#login-buttons
+  absolute top 25px right 0px
+  transition-duration: 0s
+
+header.header-mini
+  position: fixed
+  top: 0px
+  height: 36px
+  background-color: white
+  z-index: 100
+
+.header-mini .header-logo
+  width: 28px
+  height: 28px
+  margin-top: 4px
+  &:hover
+    cursor: pointer
+
+.header-mini .header-logo img
+  relative top 5px left 8px
+  width: 12px
+
+.header-mini #login-buttons
+  top: 8px
 
 /*
  * Playing
@@ -135,6 +144,7 @@ header
   relative top -2px
   padding: 13px
   border: 1px solid orange
+  border-radius: 2px
 
 #add-podcast-form button
   absolute top -2px
@@ -266,3 +276,18 @@ header
   width: 800px
   height: 450px
   margin: 0 auto
+  
+.home-logo
+  display: block
+  position: relative 
+  width: 200px
+  height: 200px
+  margin: 100px auto 40px auto
+  background: orange
+  border-radius: 50%
+
+.home-logo img
+  position: relative
+  left: 60px
+  top: 40px 
+  width: 80px
