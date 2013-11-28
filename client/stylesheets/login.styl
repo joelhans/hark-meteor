@@ -1,0 +1,41 @@
+@import 'nib'
+@import '_mixins'
+
+orange = rgb(226, 132, 109)
+teal   = rgb(58, 128, 130)
+purple = rgb(42, 8, 61)
+white  = rgb(242, 242, 242)
+red    = rgb(237, 91, 71)
+
+#login-dropdown-list
+  border-radius: 2px
+  box-shadow: none
+  border: 1px solid orange
+
+#login-buttons input[type=email],
+#login-buttons input[type=password]
+  padding: 14px
+  border-radius: 2px
+  border: 1px solid orange
+  &:focus
+    border: 1px solid purple
+    outline: 0
+
+#login-buttons .login-button
+  color: purple
+  text-shadow: none
+  padding: 14px 20px 14px 20px
+  background-color: orange
+  background-image: none
+  box-shadow: none
+  border: 0px
+  border-radius: 2px
+  transition-property: background-color
+  transition-duration: 0.2s
+  &:hover
+    color: white
+    background-color: purple
+  &:active
+    color: white
+    background-color: purple
+    background-image: none

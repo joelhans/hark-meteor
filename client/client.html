@@ -12,9 +12,12 @@
     <section class="main">
       {{#if currentUser}}
         <section class="left">
-          {{> playing}}
           {{> add}}
-          {{> subscriptions}}
+          {{> playing}}
+          <section class="feeds-playlist-switcher">
+            {{> subscriptions}}
+            {{> playlist}}
+          </section>
         </section>
         <section class="right">
           <header> 
@@ -24,7 +27,6 @@
             {{ loginButtons}}
           </header>
           {{> timeline}}
-          {{> playlist}}
         </section>
       {{else}} 
         {{> greeting}}
@@ -39,10 +41,13 @@
 </body>
 
 <template name="greeting">
-  <div class="home-logo">
-    <img src="/img/logo.svg" />
-  </div>
-  <h1>Hark is your personal radio station.</h1>
+  <section class="greeting">
+    <div class="home-logo">
+      <img src="/img/logo.svg" />
+    </div>
+    <h1>Hark is your personal radio station.</h1>
+    {{ loginButtons}}
+  </section>
 </template>
 
 <!---------------------------
@@ -82,8 +87,9 @@
 -- TEMPLATE/SUBSCRIPTIONS
 ---------------------------->
 <template name="subscriptions">
+  <a href="/" class="feed-all">Feeds</a>
+  <a href="#" class="feed-playlist">Playlist</a>
   <ul class="feeds">
-    <li><a href="/" class="feed-view">All</a></li>
   {{#each feeds}}
     <li class="feed">
       <a href="/feed/{{_id}}" class="feed-view">{{title}}</a>

@@ -36,17 +36,23 @@ Router.map () ->
 #############################
 
 Template.add.events =
-  # Add new podcast.
+  # First step in adding new podcast. Hide the "Add" button,
+  # show the "+"/confirm button, and the input area.
   'click #add-podcast-form .add': (e) ->
     e.preventDefault()
     $('#add-podcast-form .add, #update').hide()
     $('#add-podcast-form .confirm, #add-podcast-form input').show()
-  
+ 
+  # Second step in adding new podcast. Ensure that there is a
+  # an input. If so, call the add method, reset the buttons.
   'click #add-podcast-form .confirm': (e) ->
     e.preventDefault()
     input = document.getElementById('podcast-uri')
     if input.value isnt ''
       Meteor.call 'add', input.value
+    #
+    # TODO: Add in error handling for this.
+    #
     input.value = ''
     $('#add-podcast-form .add, #update').show()
     $('#add-podcast-form .confirm, #add-podcast-form input').hide()
@@ -103,7 +109,6 @@ Template.timeline.rendered = () ->
 
 # Header-related bits.
 $(document).scroll () ->
-  console.log $(document).scrollTop()
   if $(document).scrollTop() > 53
     $('header').addClass 'header-mini'
     $('#items').css 'margin-top', 110
@@ -120,6 +125,18 @@ Template.subscriptions.feeds = () ->
   return feeds.find({userId: Meteor.userId()}, {sort: [['title','asc']]})
 
 Template.subscriptions.events =
+  # Switch to playlist view.
+  'click .feed-playlist': (e) ->
+    e.preventDefault()
+    $('.playlist').animate {left: '0'}, 200
+    $('.feeds').animate {left: '-220'}, 200
+
+  # Switch to "all feeds" view. 
+  'click .feed-all': (e) ->
+    e.preventDefault()
+    $('.feeds').animate {left: '0'}, 200
+    $('.playlist').animate {left: '220'}, 200
+
   # Destroy.
   'click .feed-destroy': (e) ->
     e.preventDefault()
@@ -152,6 +169,7 @@ Template.playlist.events =
     e.preventDefault()
     Meteor.call 'playlistDestroy', this
 
+  # Clear playlist.
   'click .playlist-clear': (e) ->
     e.preventDefault()
     Meteor.call 'playlistClear', this
@@ -160,11 +178,25 @@ Template.playlist.events =
 # PLAYER
 #############################
 
-Meteor.subscribe 'sync', () ->
-  Session.set 'playing', sync.find({userId: Meteor.userId()}).fetch()[0].playing
-  Session.set 'progress', sync.find({userId: Meteor.userId()}).fetch()[0].progress
+playerAudio = playerVideo = updateProgress = null
 
-# Play audio!
+# Set up sync.
+# We look for sync data. If there is some, we set the Session
+# accordingly. If not (new user), we give these empty/0 values 
+# so that we can move on.
+Meteor.subscribe 'sync', () ->
+  syncData = sync.find({userId: Meteor.userId()}).fetch()[0]
+  if syncData?
+    Session.set 'playing', sync.find({userId: Meteor.userId()}).fetch()[0].playing
+    Session.set 'progress', sync.find({userId: Meteor.userId()}).fetch()[0].progress
+  else 
+    Session.set 'playing', []
+    Session.set 'progress', 0
+
+# Play audio
+# Usage: playAudio data, true/false, true/false
+# This resets progress, sets the file in the <audio> element,
+# and either begins playing or waits for the user.
 playAudio = (data, auto, sync) ->
   Session.set 'playing', data
   if sync is false
@@ -177,7 +209,10 @@ playAudio = (data, auto, sync) ->
   else
     playerAudio.pause()
 
-# Play audio!
+# Play video
+# Usage: playVideo data, true/false, true/false
+# This resets progress, sets the file in the <video> element,
+# and either begins playing or waits for the user.
 playVideo = (data, auto, sync) ->
   Session.set 'playing', data
   if sync is false
@@ -190,7 +225,9 @@ playVideo = (data, auto, sync) ->
   else
     playerVideo.pause()
 
-# Help choose between video or audio
+# Help choose between video or audio.
+# Essentially, check if there are 'mp3' or 'mp4' in the url string,
+# and redirect accordingly.
 audioOrVideo = (data, auto, sync) ->
   file = data.file[0].url
   if file.indexOf('mp4') isnt -1
@@ -202,8 +239,8 @@ audioOrVideo = (data, auto, sync) ->
     $('.player-audio').show()
     playAudio data, auto, sync
 
-playerAudio = playerVideo = updateProgress = null
-
+# Default player options.
+# These are applicable to both players, and are used accordingly.
 playerOptions = 
     audioWidth: 800
     audioHeight: 30
@@ -227,7 +264,7 @@ playerOptions =
         updateProgress = setInterval () ->
           Session.set 'progress', e.target.currentTime
           Meteor.call 'sync', Session.get('playing'), Session.get('progress')
-        , 1000
+        , 10000
 
       # On pause, halt the updateProgress interval.
       mediaElement.addEventListener 'pause', (e) ->
@@ -265,6 +302,7 @@ Template.playing.current = () ->
 #############################
 
 Template.notify.helpers
+  # If there are messages, set the session variables
   messages: () -> 
     if messages.find({userId: Meteor.userId()}).fetch()[0]? is true
       Session.set 'errorShow', true
@@ -273,13 +311,15 @@ Template.notify.helpers
     return messages.find({userId: Meteor.userId()}).fetch()
 
 Template.notify.rendered = () ->
+  # On render, we look to see if the session variable is true.
+  # If so, add a class to the notification window to show it.
   $notify = $(this.find('.notify'))
   Meteor.defer () ->
     if Session.equals 'errorShow', true
-      console.log $notify.outerWidth()
       $notify.addClass 'error-show'
 
 Template.notify.events =
+  # Dismiss the error notification window.
   'click': (e) ->
     Session.set 'errorShow', false
     Meteor.call 'dismissError'
