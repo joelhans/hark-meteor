@@ -2,15 +2,33 @@
 
 [Hark](https://github.com/joelhans/Hark) is being re-written from scratch. This time, it's all about Meteor.
 
-Installation details incoming.
+## Installation
 
-## TODO
+Clone the repo.
 
-2. Ability to load more items in an individual feed.
-9. Overall pretty-ness.
-10. Search.
-11. Responsive/mobile layout.
+`git clone https://github.com/joelhans/hark-meteor.git`
 
-## FIXES
+cd into the directory.
 
-1. On playlist advance, need to auto-play the next podcast.
+`cd hark-meteor`
+
+Install packages from [Atmosphere](https://atmosphere.meteor.com/).
+
+`mrt add npm && mrt add moment && mrt add iron-router && mrt add font-awesome`
+
+Run it!
+
+`meteor`
+
+Find it at `http://localhost:3000`.
+
+Dockerfile incoming at some point...
+
+## Todo
+
+1. Ability to load more items in an individual feed.
+2. Overall pretty-ness.
+3. Search.
+4. Responsive/mobile layout.
+
+## Bugfixes
