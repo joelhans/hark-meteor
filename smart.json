@@ -2,6 +2,7 @@
   "packages": {
     "npm": {},
     "moment": {},
-    "iron-router": {}
+    "iron-router": {},
+    "font-awesome": {}
   }
 }
