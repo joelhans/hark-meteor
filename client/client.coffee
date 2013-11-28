@@ -11,6 +11,11 @@ Deps.autorun () ->
   }
   Meteor.subscribe 'playlists'
 
+# Set interval to update every 30 minutes.
+Meteor.setInterval () ->
+  Meteor.call 'update'
+, 18000000
+
 #############################
 # ROUTING
 #############################

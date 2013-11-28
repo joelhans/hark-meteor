@@ -37,26 +37,40 @@ addFeed = (userId, url) ->
 
 # REFRESH FEED
 refreshFeed = (feed, source) ->
-  count = 0
+  Fiber () -> 
+    count = 0
 
-  request(feed.url)
-    .pipe(new FeedParser())
-    .on 'readable', () ->
-      stream  = this
-      item    = null
-      ++count
+    console.log 'updating ' + feed.title
+    request(feed.url)
+      .on 'error', (err) ->
+        # This is triggered on a prototcol error, from request.
+        details = 'The URL you entered is not valid. ' +
+                  'Please check it for accuracy.'
+        pushError this.userId, feed.url, details
+      .pipe(new FeedParser())
+      .on 'error', (err) ->
+        # This is triggered by feedparser if it's not XML.
+        details = 'There was an error adding feed '+feed.url+'. ' +
+                  'Check you entered the URL correctly' +
+                  ', or try again later. ' + err
+        pushError this.userId, feed.url, details
+      .on 'readable', () ->
+        stream  = this
+        item    = null
+        ++count
 
-      if source is 'new'
-        # A silly hack to mark only the most recent item as 'unlistened.'
-        if count is 1
+        if source is 'new'
+          # A silly hack to mark only the most recent item as 'unlistened.'
+          if count is 1
+            while item = stream.read()
+              addItem feed, item, false
+          else if count >= 2
+            while item = stream.read()
+              addItem feed, item, true
+        else if source is 'update'
           while item = stream.read()
             addItem feed, item, false
-        else if count >= 2
-          while item = stream.read()
-            addItem feed, item, true
-      else if source is 'update'
-        while item = stream.read()
-          addItem feed, item, false
+  .run()
 
 # REFRESH FEEDS
 refreshFeeds = () ->
