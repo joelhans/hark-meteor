@@ -138,7 +138,6 @@ Template.subscriptions.events =
 
   # Switch to "all feeds" view. 
   'click .feed-all': (e) ->
-    e.preventDefault()
     $('.feeds').animate {left: '0'}, 200
     $('.playlist').animate {left: '220'}, 200
 

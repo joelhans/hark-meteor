@@ -27,8 +27,12 @@ Dockerfile incoming at some point...
 ## Todo
 
 1. Ability to load more items in an individual feed.
-2. Overall pretty-ness.
+2. Responsive/mobile layout.
 3. Search.
-4. Responsive/mobile layout.
+4. Phonegap/Cordova support for mobile apps?
 
 ## Bugfixes
+
+1. Adding to the playlist while looking at the playlist leaves it blank. Deal with the left positioning.
+2. Removing from the playlist has the same problem. Really, doing anything does.
+3. If an item is sync-ed, and a user re-starts it, it is marked as listened.

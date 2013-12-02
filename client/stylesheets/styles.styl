@@ -37,7 +37,7 @@ body
 
 #container
   position: relative
-  max-width: 960px
+  max-width: 1200px
   margin: 20px auto 0 auto
   clearfix()
 
@@ -64,9 +64,6 @@ header
   height: 70px
   margin-bottom: 40px
 
-.greeting
-  text-align: center
-
 .header-logo
   display: block
   position: relative 
@@ -86,14 +83,6 @@ header
   width: 32px
   transition-property: width, height, left, top
   transition-duration: 0.3s
-
-.greeting h1
-  text-align: center
- 
-.greeting #login-buttons
-  relative top 0 left 0
-  margin: 0 auto
-  text-align: left
 
 #login-buttons
   absolute top 25px right 0px
@@ -318,17 +307,5 @@ header.header-mini
   height: 450px
   margin: 0 auto
   
-.home-logo
-  display: block
-  position: relative 
-  width: 200px
-  height: 200px
-  margin: 100px auto 40px auto
-  background: orange
-  border-radius: 50%
+@import "_responsive"
 
-.home-logo img
-  position: relative
-  left: 60px
-  top: 40px 
-  width: 80px
