@@ -20,6 +20,9 @@ Meteor.setInterval () ->
 # ROUTING
 #############################
 
+Router.configure
+  autoRender: false
+
 Router.map () ->
 
   this.route 'home', {
@@ -27,6 +30,8 @@ Router.map () ->
     load: () ->
       Session.set 'feedId', undefined
       Session.set 'page', 0
+      $('.settings').hide()
+      $('#items').show()
   }
 
   this.route 'items', {
@@ -34,10 +39,18 @@ Router.map () ->
     load: () ->
       Session.set 'feedId', this.params._id
       Session.set 'page', 0
+      $('.settings').hide()
+      $('#items').show()
   }
-  
+
+  this.route 'settings',
+    path: '/settings'
+    load: () ->
+      $('#items').hide()
+      $('.settings').show()
+
 #############################
-# HOME
+# ADD
 #############################
 
 Template.add.events =

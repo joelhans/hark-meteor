@@ -31,9 +31,15 @@
             <div class="responsive-nav">
               <i class="fa fa-bars"></i>
             </div>
+            <!--
+            <a href="/settings" class="nav-settings">
+              <i class="fa fa-gears"></i>
+            </a>
+            -->
             {{ loginButtons}}
           </header>
           {{> timeline}}
+          {{> settings}}
         </section>
       {{else}} 
         {{> greeting}}
@@ -132,6 +138,16 @@
       </li>
     {{/each}}
   </ul>
+</template>
+
+<!---------------------------
+-- TEMPLATE/SETTINGS
+---------------------------->
+
+<template name="settings">
+  <section class="settings">
+    <h1>SETTINGS</h1>
+  </section>
 </template>
 
 <!---------------------------

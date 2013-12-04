@@ -26,12 +26,13 @@ Dockerfile incoming at some point...
 
 ## Todo
 
-1. Ability to load more items in an individual feed.
-2. Responsive/mobile layout.
-3. Search.
-4. Phonegap/Cordova support for mobile apps?
+1. OPML import/export.
+2. Ability to load more items in an individual feed.
+3. Responsive/mobile layout.
+4. Search.
+5. Phonegap/Cordova support for mobile apps?
 
 ## Bugfixes
 
-3. If an item is sync-ed, and a user re-starts it, it is marked as listened.
-4. Some audio doesn't play on Linux. Problem with Flash?
+1. If an item is sync-ed, and a user re-starts it, it is marked as listened.
+2. Some audio doesn't play on Linux. Problem with Flash?

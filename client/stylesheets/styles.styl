@@ -84,6 +84,19 @@ header
   transition-property: width, height, left, top
   transition-duration: 0.3s
 
+.nav-settings
+  absolute top 10px left 100px
+  font-size: 2rem
+  transition-property: width, height, left, top
+  transition-duration: 0.3s
+  i
+    color: orange
+    transition-property: color
+    transition-duration: 0.3s
+  i:hover
+    color: purple
+    cursor: hover
+  
 #login-buttons
   absolute top 25px right 0px
   transition-duration: 0s
@@ -105,6 +118,10 @@ header.header-mini
 .header-mini .header-logo img
   relative top 5px left 8px
   width: 12px
+
+.header-mini .settings
+  absolute top 5px left 40px
+  font-size: 1rem
 
 .header-mini #login-buttons
   top: 8px
@@ -306,6 +323,13 @@ header.header-mini
   width: 800px
   height: 450px
   margin: 0 auto
+
+/*
+ * Settings
+ */
+
+.settings
+  display: none
 
 @import "_player"  
 @import "_responsive"
