@@ -133,13 +133,15 @@ Template.subscriptions.events =
   # Switch to playlist view.
   'click .feed-playlist': (e) ->
     e.preventDefault()
+    $('.feeds-playlist-switcher').addClass 'playlistShow'
     $('.playlist').animate {left: '0'}, 200
     $('.feeds').animate {left: '-220'}, 200
 
   # Switch to "all feeds" view. 
   'click .feed-all': (e) ->
+    $('.feeds-playlist-switcher').removeClass 'playlistShow'
     $('.feeds').animate {left: '0'}, 200
-    $('.playlist').animate {left: '220'}, 200
+    $('.playlist').removeClass('visible').animate {left: '220'}, 200
 
   # Destroy.
   'click .feed-destroy': (e) ->
@@ -157,7 +159,6 @@ $(window).resize () ->
 
 #############################
 # PLAYLIST
-#############################
 
 Template.playlist.list = () ->
   return playlists.find({userId: Meteor.userId()}).fetch()
@@ -177,6 +178,13 @@ Template.playlist.events =
   'click .playlist-clear': (e) ->
     e.preventDefault()
     Meteor.call 'playlistClear', this
+
+Template.playlist.rendered = () ->
+  # On render, we check to make sure if the playlist is supposed
+  # to be visible. If so, we keep it in its proper place.
+  Meteor.defer () ->
+    if $('.feeds-playlist-switcher').is '.playlistShow'
+      $('.playlist').css 'left', 0
 
 #############################
 # PLAYER
@@ -236,18 +244,16 @@ audioOrVideo = (data, auto, sync) ->
   file = data.file[0].url
   if file.indexOf('mp4') isnt -1
     $('.player-audio').hide()
-    $('.player-video').show()
+    $('.player-video, .player-video-extras').show()
     playVideo data, auto
   else
-    $('.player-video').hide()
+    $('.player-video, .player-video-extras').hide()
     $('.player-audio').show()
     playAudio data, auto, sync
 
 # Default player options.
 # These are applicable to both players, and are used accordingly.
 playerOptions = 
-    audioWidth: 800
-    audioHeight: 30
     videoWidth: 800
     videoHeight: 450
     startVolume: 0.5
@@ -296,6 +302,16 @@ Template.player.rendered = () ->
     playerAudio.pause()
     playerVideo.pause()
     audioOrVideo Session.get('playing'), false, true
+
+    # Extras related to the video player.
+    videoLeft = ($(window).width() - $('.mejs-video').width()) / 2 + $('.mejs-video').width() - 1
+    $('.player-video-extras').css 'left', videoLeft
+
+Template.player.events =
+
+  'click .fa-minus-square': (e) ->
+    e.preventDefault()
+    $('.mejs-mediaelement, .mejs-layers, .player-video-extras').toggleClass 'video-hidden'
 
 # Update the currently playing template on sync changes.
 Template.playing.current = () ->

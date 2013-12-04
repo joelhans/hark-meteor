@@ -33,6 +33,4 @@ Dockerfile incoming at some point...
 
 ## Bugfixes
 
-1. Adding to the playlist while looking at the playlist leaves it blank. Deal with the left positioning.
-2. Removing from the playlist has the same problem. Really, doing anything does.
 3. If an item is sync-ed, and a user re-starts it, it is marked as listened.
