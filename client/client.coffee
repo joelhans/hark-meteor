@@ -159,6 +159,7 @@ $(window).resize () ->
 
 #############################
 # PLAYLIST
+#############################
 
 Template.playlist.list = () ->
   return playlists.find({userId: Meteor.userId()}).fetch()
@@ -311,7 +312,7 @@ Template.player.events =
 
   'click .fa-minus-square': (e) ->
     e.preventDefault()
-    $('.mejs-mediaelement, .mejs-layers, .player-video-extras').toggleClass 'video-hidden'
+    $('.mejs-video, .mejs-mediaelement, .mejs-layers, .player-video-extras').toggleClass 'video-hidden'
 
 # Update the currently playing template on sync changes.
 Template.playing.current = () ->
