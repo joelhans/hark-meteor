@@ -6,6 +6,7 @@ FeedParser = Meteor.require 'feedparser'
 request    = Meteor.require 'request'
 Fiber      = Meteor.require 'fibers'
 urlParser  = Meteor.require 'url'
+resanitize = Meteor.require 'resanitize'
 
 #############################
 # FUNCTIONS
@@ -83,13 +84,18 @@ addItem = (feed, item, listened) ->
     Fiber () ->
       if items.findOne {feedId: feed._id, guid: item.guid}
         return false
+
+      # Sanitize the summary and content fields.
+      summary = resanitize(item.summary)
+      content = resanitize(item.description)
+
       items.insert
         feedId   : feed._id
         feed     : feed.title
         userId   : feed.userId
         title    : item.title
-        summary  : item.summary
-        content  : item.description
+        summary  : summary
+        content  : content
         guid     : item.guid
         date     : item.date
         link     : item.link
