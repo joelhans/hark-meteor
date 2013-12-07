@@ -259,7 +259,7 @@ audioOrVideo = (data, auto, sync) ->
   if file.indexOf('mp4') isnt -1
     $('.player-audio').hide()
     $('.player-video, .player-video-extras').show()
-    playVideo data, auto
+    playVideo data, auto, sync
   else
     $('.player-video, .player-video-extras').hide()
     $('.player-audio').show()
