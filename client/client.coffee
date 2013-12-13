@@ -89,6 +89,7 @@ Template.timeline.items = () ->
     feedId: Session.get 'feedId'
     page: Session.get 'page'
   }).map (item) ->
+    console.log item
     return item
 
 Template.timeline.events =
@@ -114,7 +115,7 @@ Template.timeline.events =
 
   # Load more.
   'click .load-more': (e) ->
-    console.log Session.get 'page'
+    e.preventDefault()
     Session.set('page', (Session.get('page') || 0) + 1)
     console.log Session.get 'page'
 

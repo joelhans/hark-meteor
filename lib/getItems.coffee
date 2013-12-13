@@ -13,17 +13,20 @@
 #############################
 
 @getItems = (userId, params) ->
-  # ITEMS_PER_LOAD = 1
+  ITEMS_PER_LOAD = 10
   selectors = userId: userId
   options = sort: [['date', 'desc']]
-  # options.limit = ITEMS_PER_LOAD
-  # options.skip = (params.page || 0) * ITEMS_PER_LOAD
 
-  if params.feedId 
-    selectors.feedId = params.feedId
-  else
+  # If we're looking at the main feed.
+  if !params.feedId 
     selectors.listened = false
 
-  # console.log options
+  # If we're looking at an individual feed.
+  else
+    selectors.feedId = params.feedId
+    options.limit = ITEMS_PER_LOAD
+    options.skip = (params.page || 0) * ITEMS_PER_LOAD
+
+  console.log options
 
   return items.find(selectors, options)
