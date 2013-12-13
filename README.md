@@ -37,3 +37,4 @@ Dockerfile incoming at some point...
 1. If an item is sync-ed, and a user re-starts it, it is marked as listened.
 2. Some audio doesn't play on Linux. Problem with Flash?
 3. Videos are not set to progress = 0 when played.
+4. Seems to be an error when a video is put into the playlist. Skipped right over.5. Vergecast video isn't working. Need to check on that.
