@@ -41,7 +41,6 @@ refreshFeed = (feed, source) ->
   Fiber () -> 
     count = 0
 
-    console.log 'updating ' + feed.title
     request(feed.url)
       .on 'error', (err) ->
         # This is triggered on a prototcol error, from request.
