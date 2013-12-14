@@ -98,6 +98,10 @@ Template.timeline.events =
     audioOrVideo this, true, false
   
   # Mark as listened.
+  'click .item-description': (e) ->
+    e.preventDefault()
+  
+  # Mark as listened.
   'click .item-listened': (e) ->
     e.preventDefault()
     Meteor.call 'markListened', this._id

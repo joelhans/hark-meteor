@@ -127,6 +127,8 @@
           |
           <span class="moment" date="{{date}}" title="published: {{date}}">{{date}}</span>
           |
+          <a href="#" id="{{_id}}" class="item-description">Read description</a>
+          |
           {{#if listened}}
           <a href="#" id="{{_id}}" class="item-unlistened">Mark unlistened</a>
           {{else}}
@@ -134,7 +136,10 @@
           {{/if}}
           |
           <a href="#" class="item-add-playlist">Add to playlist</a>
-        </div> 
+        </div>
+        <div class="description">
+          {{{content}}}
+        </div>
       </li>
     {{/each}}
   </ul>
