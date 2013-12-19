@@ -98,9 +98,10 @@ Template.timeline.events =
     e.preventDefault()
     audioOrVideo this, true, false
   
-  # Mark as listened.
+  # Read description.
   'click .item-description': (e) ->
     e.preventDefault()
+    $('#'+this._id+' .description').toggle(0)
   
   # Mark as listened.
   'click .item-listened': (e) ->

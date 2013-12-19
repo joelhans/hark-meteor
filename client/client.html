@@ -118,7 +118,7 @@
 <template name="timeline">
   <ul id="items">
     {{#each items}}
-      <li class="item">
+      <li class="item" id="{{_id}}">
         <h1>
           <a href="#" id="{{_id}}" file="{{file.0.url}}" class="item-play">{{title}}</a>
         </h1>
