@@ -6,7 +6,7 @@ FeedParser = Meteor.require 'feedparser'
 request    = Meteor.require 'request'
 Fiber      = Meteor.require 'fibers'
 urlParser  = Meteor.require 'url'
-resanitize = Meteor.require 'resanitize'
+sanitizer  = Meteor.require 'sanitizer'
 
 #############################
 # FUNCTIONS
@@ -85,8 +85,8 @@ addItem = (feed, item, listened) ->
         return false
 
       # Sanitize the summary and content fields.
-      summary = resanitize(item.summary)
-      content = resanitize(item.description)
+      summary = sanitizer.sanitize(item.summary)
+      content = sanitizer.sanitize(item.description)
 
       items.insert
         feedId   : feed._id
