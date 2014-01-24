@@ -4,6 +4,8 @@
 
 ## Installation
 
+This assumes you have Meteor and Meteorite installed...
+
 Clone the repo.
 
 `git clone https://github.com/joelhans/hark-meteor.git`

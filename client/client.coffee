@@ -286,7 +286,8 @@ playerOptions =
       # On player load, set the progress from sync.
       mediaElement.addEventListener 'loadedmetadata', (e) ->
         progress = Session.get 'progress'
-        file = Session.get('playing').file[0].url
+        if Session.get('playing').file[0].url?
+          file = Session.get('playing').file[0].url
         mediaElement.setCurrentTime progress
       
       # On playing, update progress every 10 seconds, sync to server.
