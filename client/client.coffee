@@ -88,9 +88,7 @@ Template.timeline.items = () ->
   return getItems(Meteor.userId(), {
     feedId: Session.get 'feedId'
     page: Session.get 'page'
-  }).map (item) ->
-    console.log item
-    return item
+  })
 
 Template.timeline.events =
   # Play a podcast.
@@ -122,7 +120,6 @@ Template.timeline.events =
   'click .load-more': (e) ->
     e.preventDefault()
     Session.set('page', (Session.get('page') || 0) + 1)
-    console.log Session.get 'page'
 
 Template.timeline.rendered = () ->
   # Moment-ize all the dates in the timeline.

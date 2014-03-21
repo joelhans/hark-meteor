@@ -176,16 +176,16 @@ Meteor.startup () ->
 # PUBLISH
 #############################
 Meteor.publish 'messages', () ->
-  return messages.find()
+  return messages.find({userId: this.userId})
 
 Meteor.publish 'feeds', () ->
-  return feeds.find()
+  return feeds.find({userId: this.userId})
 
 Meteor.publish 'items', (params) ->
   return getItems(this.userId, params)
 
 Meteor.publish 'sync', () ->
-  return sync.find()
+  return sync.find({userId: this.userId})
 
 Meteor.publish 'playlists', () ->
-  return playlists.find()
+  return playlists.find({userId: this.userId})
