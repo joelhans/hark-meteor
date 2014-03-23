@@ -3,6 +3,7 @@
     "npm": {},
     "moment": {},
     "iron-router": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "xml2js": {}
   }
 }

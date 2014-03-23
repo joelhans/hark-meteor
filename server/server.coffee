@@ -7,6 +7,9 @@ request    = Meteor.require 'request'
 Fiber      = Meteor.require 'fibers'
 urlParser  = Meteor.require 'url'
 sanitizer  = Meteor.require 'sanitizer'
+fs         = Meteor.require 'fs'
+xml2js     = Meteor.require 'xml2js'
+OpmlParser = Meteor.require 'opmlparser'
 
 #############################
 # FUNCTIONS
@@ -102,6 +105,26 @@ addItem = (feed, item, listened) ->
         listened : listened
     .run()
 
+# IMPORT OPML
+opmlRead = (file) ->
+  opmlparser = new OpmlParser()
+
+  # Read the OPML stream, call the 'add' method to add the podcasts.
+  opmlparser.on 'readable', () ->
+    outline = {} 
+    while outline = this.read()
+      if outline['#type'] is 'feed'
+        Meteor.call 'add', outline.xmlurl
+
+  # Error handling.
+  opmlparser.on 'error', (err) ->
+    details = 'There was an issue with your OPML file. Please try adding another.'
+    pushError Meteor.userId(), url, details
+    return
+
+  opmlparser.end file
+
+# ERROR HANDLING
 pushError = (userId, url, details) ->
   Fiber () ->
     messages.remove {userId: userId}
@@ -171,6 +194,32 @@ Meteor.startup () ->
     
     dismissError: () ->
       messages.remove {userId: Meteor.userId()}
+
+    opmlImport: (file) ->
+      opmlRead(file)
+
+#############################
+# ROUTES
+#############################
+
+Router.map () ->
+
+  # OPML EXPORT
+  this.route 'opmlExport',
+    where: 'server'
+    path: '/opml-export/:_id'
+    action: () ->
+      opmlFeeds = feeds.find({userId: this.params._id})
+
+      opml  = '<?xml version="1.0"?>'
+      opml += '<opml version="1.0"><head></head><body>'
+      opml += '<outline text="main">'
+      opmlFeeds.forEach (feed) ->
+        opml += '<outline text="'+feed.title+'" xmlUrl="'+feed.url+'" />'
+      opml += '</outline></body></opml>'
+
+      this.response.writeHead(200, {'Content-Type': 'text/xml'}); 
+      this.response.end(opml);
 
 #############################
 # PUBLISH

@@ -20,34 +20,28 @@ Meteor.setInterval () ->
 # ROUTING
 #############################
 
-Router.configure
-  autoRender: false
-
 Router.map () ->
 
-  this.route 'home', {
+  this.route 'home',
     path: '/'
+    template: 'timeline'
+    layoutTemplate: 'main-yield'
     load: () ->
       Session.set 'feedId', undefined
       Session.set 'page', 0
-      $('.settings').hide()
-      $('#items').show()
-  }
 
-  this.route 'items', {
+  this.route 'items',
     path: '/feed/:_id'
+    template: 'timeline'
+    layoutTemplate: 'main-yield'
     load: () ->
       Session.set 'feedId', this.params._id
       Session.set 'page', 0
-      $('.settings').hide()
-      $('#items').show()
-  }
 
   this.route 'settings',
     path: '/settings'
-    load: () ->
-      $('#items').hide()
-      $('.settings').show()
+    template: 'settings'
+    layoutTemplate: 'main-yield'
 
 #############################
 # ADD
@@ -59,7 +53,7 @@ Template.add.events =
   'click #add-podcast-form .add': (e) ->
     e.preventDefault()
     $('#add-podcast-form .add, #update').hide()
-    $('#add-podcast-form .confirm, #add-podcast-form input').show()
+    $('#add-podcast-form .confirm, #add-podcast-form .opml, #add-podcast-form input').show()
  
   # Second step in adding new podcast. Ensure that there is a
   # an input. If so, call the add method, reset the buttons.
@@ -73,12 +67,35 @@ Template.add.events =
     #
     input.value = ''
     $('#add-podcast-form .add, #update').show()
-    $('#add-podcast-form .confirm, #add-podcast-form input').hide()
+    $('#add-podcast-form .confirm, #add-podcast-form .opml, #add-podcast-form input').hide()
   
+  # Basically, allowing the ability to click on the OPML button
+  # and opening a file chooser dialogue. After that is complete,
+  # the 'change input' event below will fire.
+  'click #add-podcast-form .opml': (e) ->
+    e.preventDefault()
+    $('#opmlImport').click()
+    $('#add-podcast-form .add, #update').show()
+    $('#add-podcast-form .confirm, #add-podcast-form .opml, #add-podcast-form input').hide()
+
+  # Watch the hidden input for any changes, then fire the
+  # readOpml function that calls the server-side adds.
+  'change #opmlImport': (e) ->
+    readOpml(e)
+
   # Update podcasts.
   'click #update': (e) ->
     e.preventDefault()
     Meteor.call 'update'
+
+# The function to pull the file from the input, read its
+# contents, and then send that to the Meteor call that will
+# handle adding the podcasts.
+readOpml = (e) ->
+  reader = new FileReader()
+  reader.onload = () ->
+    Meteor.call 'opmlImport', this.result
+  reader.readAsText opmlImport.files[0]
 
 #############################
 # TIMELINE

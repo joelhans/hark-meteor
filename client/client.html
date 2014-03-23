@@ -11,7 +11,12 @@
 
 </head>
 
-<body>
+<body></body>
+
+<!---------------------------
+-- TEMPLATE/MAIN YIELD
+---------------------------->
+<template name="main-yield">
   <section id="container">
     <section class="main">
       {{#if currentUser}}
@@ -25,21 +30,18 @@
         </section>
         <section class="right">
           <header> 
-            <div class="header-logo">
+            <a class="header-logo" href="/">
               <img src="/img/logo.svg" />
-            </div>
+            </a>
             <div class="responsive-nav">
               <i class="fa fa-bars"></i>
             </div>
-            <!--
             <a href="/settings" class="nav-settings">
               <i class="fa fa-gears"></i>
             </a>
-            -->
             {{ loginButtons}}
           </header>
-          {{> timeline}}
-          {{> settings}}
+          {{yield}}
         </section>
       {{else}} 
         {{> greeting}}
@@ -51,8 +53,11 @@
     {{> notify}}
     {{> player}}
   {{/if}}
-</body>
+</template>
 
+<!---------------------------
+-- TEMPLATE/GREETING
+---------------------------->
 <template name="greeting">
   <section class="greeting">
     <div class="home-logo">
@@ -72,6 +77,8 @@
       <input type="text" id="podcast-uri" placeholder="Enter a feed." />
       <button class="add">Add</button>
       <button class="confirm">+</button>
+      <button class="opml">OPML</button>
+      <input type="file" name="opmlImport" id="opmlImport" />
     </form>
     <a id="update" href="#">Update</a>
   </section>
@@ -149,16 +156,6 @@
 </template>
 
 <!---------------------------
--- TEMPLATE/SETTINGS
----------------------------->
-
-<template name="settings">
-  <section class="settings">
-    <h1>SETTINGS</h1>
-  </section>
-</template>
-
-<!---------------------------
 -- TEMPLATE/PLAYLIST
 ---------------------------->
 
@@ -193,7 +190,6 @@
 <!---------------------------
 -- TEMPLATE/PLAYER
 ---------------------------->
-
 <template name="player">
   <section id="player">
     <video class="player-video" src="http://mediaelementjs.com/media/echo-hereweare.mp4"></video> 
@@ -202,4 +198,12 @@
       <i class="fa fa-minus-square"></i>
     </div>
   </section>
+</template>
+
+<!---------------------------
+-- TEMPLATE/SETTINGS
+---------------------------->
+<template name="settings">
+  <h2>OPML</h2>
+  <p>Download your OPML file to migrate to another service: <a target="_blank" href="/opml-export/{{currentUser._id}}">OPML</a></p>
 </template>

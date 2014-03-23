@@ -1,5 +1,7 @@
 {
   "feedparser": "0.16.3",
   "nib": "1.0.1",
-  "sanitizer": "0.1.1"
+  "sanitizer": "0.1.1",
+  "xml2js": "0.4.1",
+  "opmlparser": "0.6.0"
 }
