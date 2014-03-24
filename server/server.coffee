@@ -8,7 +8,6 @@ Fiber      = Meteor.require 'fibers'
 urlParser  = Meteor.require 'url'
 sanitizer  = Meteor.require 'sanitizer'
 fs         = Meteor.require 'fs'
-xml2js     = Meteor.require 'xml2js'
 OpmlParser = Meteor.require 'opmlparser'
 
 #############################
@@ -215,7 +214,8 @@ Router.map () ->
       opml += '<opml version="1.0"><head></head><body>'
       opml += '<outline text="main">'
       opmlFeeds.forEach (feed) ->
-        opml += '<outline text="'+feed.title+'" xmlUrl="'+feed.url+'" />'
+        title = feed.title.replace('&', '%26')
+        opml += '<outline text="'+title+'" xmlUrl="'+feed.url+'" />'
       opml += '</outline></body></opml>'
 
       this.response.writeHead(200, {'Content-Type': 'text/xml'}); 
